@@ -1,0 +1,6 @@
+<ion-row class="row-height" *ngFor="let colorClass of colorClasses">
+    <ion-col>
+        <div class="slot {{colorClass}}" (click)="updateColor(colorClass)"></div>
+    </ion-col>
+</ion-row>
+

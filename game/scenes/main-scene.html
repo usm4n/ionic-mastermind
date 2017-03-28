@@ -1,0 +1,22 @@
+<ion-content padding scrol="false" class="default-bg">
+    <ion-grid>
+        <ion-row class="timer">
+            <ion-col text-center col-2 offset-5>
+                <p>{{getFormatedTimer()}}</p>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-6 offset-2>
+                <game-row [currentColor]="currentColor" [activeRow]="activeRow" *ngFor="let row of rows" [currentRow]="row"></game-row>
+            </ion-col>
+            <ion-col col-1 offset-1 class="color-chooser">
+                <color-chooser [(selectedColor)]="currentColor"></color-chooser>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div>
+        <p>{{currentColor | json}}</p>
+    </div>
+</ion-content>
+
+

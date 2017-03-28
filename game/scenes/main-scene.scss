@@ -1,0 +1,102 @@
+main-scene {
+    .default-bg {
+        background-color: #cbd6e2;
+    }
+    .row-height {
+        height: 55px;
+    }
+    .color-chooser {
+        margin-top: 5px;
+        padding: 0;
+    }
+    .timer {
+        height: 40px;
+        color: #aabcce;
+        font-size: .9em;
+        font-weight: bold;
+        margin-bottom: 50px;
+    }
+    .timer .col {
+        background-color: #223b54;
+        border: 1px solid #0b1c2c;
+        border-radius: 4px;
+        box-shadow: inset 0px 0px 7px #0b1c2c;
+    }
+    .row-inactive .col, .result-col.inactive {
+        background-color: #627e99;
+        border: 1px solid #405c79;
+        box-shadow: inset 1px 1px 1px #cbd6e2;
+        background-image: linear-gradient(#627e99, #5a758e);
+    }
+    .row-active .col:not(.result-col), .color-chooser .col, .result-col.active {
+        background-color: #e5ebf1;
+        border: 1px solid #cbd6e2;
+        box-shadow: inset 1px 1px 1px #627e99;
+        background-image: linear-gradient(#e5ebf1, #e7f0f5);
+    }
+    .slot {
+        height: 45px;
+        border-radius: 50%;
+    }
+    .orange {
+        border: 1px solid #99744e;
+        box-shadow: inset 0px 1px 2px rgba(255, 255, 255, 0.45);
+        background-color: #e4a05a;
+        background-image: linear-gradient(#e4a05a, #bf8b56);
+    }
+    .yellow {
+        border: 1px solid #959546;
+        box-shadow: inset 0px 1px 2px rgba(255, 255, 255, 0.45);
+        background-color: #dede56;
+        background-image: linear-gradient(#dede56, #bfbf56);
+    }
+    .green {
+        border: 1px solid #709e42;
+        box-shadow: inset 0px 1px 2px rgba(255, 255, 255, 0.45);
+        background-color: #a9e36f;
+        background-image: linear-gradient(#a9e36f, #8bbf56);
+    }
+    .cyan {
+        border: 1px solid #41a574;
+        box-shadow: inset 0px 1px 2px rgba(255, 255, 255, 0.45);
+        background-color: #78e3ae;
+        background-image: linear-gradient(#78e3ae, #56bf8b);
+    }
+    .blue {
+        border: 1px solid #4e6f8f;
+        box-shadow: inset 0px 1px 2px rgba(255, 255, 255, 0.45);
+        background-color: #6ca9e5;
+        background-image: linear-gradient(#6ca9e5, #568bbf);
+    }
+    .magenta {
+        border: 1px solid #714a97;
+        box-shadow: inset 0px 1px 2px rgba(255, 255, 255, 0.45);
+        background-color: #a672da;
+        background-image: linear-gradient(#a672da, #8b56bf);
+    }
+    .pink {
+        border: 1px solid #973f6b;
+        box-shadow: inset 0px 1px 2px rgba(255, 255, 255, 0.45);
+        background-color: #cd74a1;
+        background-image: linear-gradient(#cd74a1, #bf568b);
+    }
+    .red {
+        border: 1px solid #aa3838;
+        box-shadow: inset 0px 1px 2px rgba(255, 255, 255, 0.45);
+        background-color: #c67b7b;
+        background-image: linear-gradient(#c67b7b, #bf5656);
+    }
+    .grey {
+        border: 1px solid #4d5c6b;
+        box-shadow: inset 0px 1px 2px rgba(255, 255, 255, 0.45);
+        background-color: #7d9ebf;
+        background-image: linear-gradient(#7d9ebf, #627e99);
+    }
+    .black {
+        border: 1px solid #23292e;
+        box-shadow: inset 0px 1px 2px rgba(255, 255, 255, 0.45);
+        background-color: #3b4e61;
+        background-image: linear-gradient(#3b4e61, #223b54);
+    }
+}
+

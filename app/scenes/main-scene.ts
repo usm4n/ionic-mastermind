@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { SequenceGeneratorService } from '../services/sequence-generator.service';
 
 @Component({
     selector: 'main-scene',
@@ -10,13 +11,14 @@ export class MainScene implements OnInit {
     activeRow: number = 10;
     currentColor: string | null;
 
-    constructor(public navCtrl: NavController) {
+    constructor(public navCtrl: NavController,
+        public sequenceGenerator: SequenceGeneratorService) {
         this.currentColor = null;
         this.rows = this.fillRows();
     }
 
     ngOnInit() {
-        //
+        this.sequenceGenerator.generateSequence();
     }
 
     fillRows(rows = 10): Array<number> {

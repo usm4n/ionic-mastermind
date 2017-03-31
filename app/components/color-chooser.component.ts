@@ -2,8 +2,11 @@ import {
     Component,
     Input,
     Output,
-    EventEmitter
+    EventEmitter,
+    Inject
 } from '@angular/core';
+
+import { GAME_CONFIG } from '../services/game-config.service'
 
 @Component({
     selector: 'color-chooser',
@@ -14,26 +17,13 @@ export class ColorChooserComponent {
     @Input() selectedColor: string;
     @Output() selectedColorChange = new EventEmitter<string>();
 
-    colorClasses: string[] = [
-        'orange',
-        'yellow',
-        'green',
-        'cyan',
-        'blue',
-        'magenta',
-        'pink',
-        'red',
-        'grey',
-        'black'
-    ];
+    colorClasses: string[];
+    constructor(@Inject(GAME_CONFIG) private config) {
+        this.colorClasses = config.colors;
+    }
 
     updateColor(color) {
         this.selectedColor = color;
         this.selectedColorChange.emit(color);
     }
-
-    _lert(c) {
-        window.alert(c);
-    }
-
 }

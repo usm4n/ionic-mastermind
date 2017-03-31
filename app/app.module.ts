@@ -8,6 +8,10 @@ import { GameRowComponent } from './components/game-row.component';
 import { GameTimerComponent } from './components/game-timer.component';
 import { ColorSlotDirective } from './components/directives/color-slot.directive';
 
+import { GAME_CONFIG, CONFIG} from './services/game-config.service';
+import { SequenceGeneratorService } from './services/sequence-generator.service';
+import { SequenceMatcherService } from './services/sequence-matcher.service';
+
 @NgModule({
     declarations: [
         MyApp,
@@ -25,6 +29,11 @@ import { ColorSlotDirective } from './components/directives/color-slot.directive
         MyApp,
         MainScene
     ],
-    providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+    providers: [
+        {provide: GAME_CONFIG, useValue: CONFIG},
+        {provide: ErrorHandler, useClass: IonicErrorHandler},
+        SequenceMatcherService,
+        SequenceGeneratorService
+    ]
 })
 export class AppModule {}

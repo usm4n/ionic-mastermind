@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
-import { MainScene } from '../game/scenes/main-scene'
+import { MainScene } from './scenes/main-scene'
 
 @Component({
   templateUrl: 'app.html'

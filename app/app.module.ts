@@ -2,16 +2,20 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { MainScene } from '../game/scenes/main-scene';
-import { ColorChooserComponent } from '../game/scenes/components/color-chooser.component';
-import { GameRowComponent } from '../game/scenes/components/game-row.component';
+import { MainScene } from './scenes/main-scene';
+import { ColorChooserComponent } from './components/color-chooser.component';
+import { GameRowComponent } from './components/game-row.component';
+import { GameTimerComponent } from './components/game-timer.component';
+import { ColorSlotDirective } from './components/directives/color-slot.directive';
 
 @NgModule({
     declarations: [
         MyApp,
         MainScene,
+        GameTimerComponent,
         ColorChooserComponent,
-        GameRowComponent
+        GameRowComponent,
+        ColorSlotDirective
     ],
     imports: [
         IonicModule.forRoot(MyApp)

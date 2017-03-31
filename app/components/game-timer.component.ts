@@ -1,35 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { NavController } from 'ionic-angular';
-
 @Component({
-    selector: 'main-scene',
-    templateUrl: 'main-scene.html'
+    selector: 'game-timer',
+    template: `<p>{{getFormatedTimer()}}</p>`
 })
-export class MainScene implements OnInit {
-    rows: number[];
-    activeRow: number = 10;
-
-    currentColor: string | null;
-
+export class GameTimerComponent implements OnInit {
     timer$ : Observable<number>;
     timer = {min: 0, sec: 0, micSec: 0, counter: 0};
 
-    constructor(public navCtrl: NavController) {
-        this.currentColor = null;
-        this.rows = this.fillRows();
+    constructor() {
         this.timer$ = this.getTimerStream();
     }
 
     ngOnInit() {
         this.timer$.subscribe(() => this.setTimerValues());
-    }
-
-    fillRows(rows = 10): Array<number> {
-        return Array<number>(rows)
-            .fill(0)
-            .map((v, i) => i + 1);
     }
 
     getTimerStream() {
@@ -54,5 +39,4 @@ export class MainScene implements OnInit {
             + (this.timer.sec < 10 ? '0' : '') + this.timer.sec + ' : 0'
             + this.timer.micSec;
     }
-
 }

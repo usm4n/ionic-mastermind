@@ -1,15 +1,7 @@
 <ion-row class="row-height" [ngClass]="{'row-inactive': activeRow !== currentRow, 'row-active': activeRow === currentRow}">
-    <ion-col class="result-col inactive"></ion-col>
-    <ion-col offset-1>
-        <div colorSlot [currentColor]="currentColor"> </div>
-    </ion-col>
-    <ion-col>
-        <div colorSlot [currentColor]="currentColor"> </div>
-    </ion-col>
-    <ion-col>
-        <div colorSlot [currentColor]="currentColor"> </div>
-    </ion-col>
-    <ion-col>
-        <div colorSlot [currentColor]="currentColor"> </div>
+    <ion-col class="result-col" [ngClass]="{'inactive' : ! activateResultColumn, 'active' : activateResultColumn}"></ion-col>
+    <ion-col *ngFor="let col of [1, 2, 3, 4]; let localFirst = first" [class.offset-1]="localFirst === true">
+        <div *ngIf="currentRow !== activeRow" class="slot"></div>
+        <div *ngIf="currentRow === activeRow" colorSlot [currentColor]="currentColor" (slotChanged)="updateRow()"></div>
     </ion-col>
 </ion-row>

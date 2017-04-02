@@ -13,7 +13,6 @@ export class MainScene implements OnInit {
 
     constructor(public navCtrl: NavController,
         public sequenceGenerator: SequenceGeneratorService) {
-        this.currentColor = null;
         this.rows = this.fillRows();
     }
 

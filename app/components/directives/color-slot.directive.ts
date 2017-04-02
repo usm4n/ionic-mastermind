@@ -17,6 +17,7 @@ export class ColorSlotDirective {
     @HostBinding('class.slot') slot = true;
 
     private oldColor: string;
+    private _color : string;
     constructor(private renderer: Renderer, private el: ElementRef) {
         console.log('Hello SlotDirective Directive');
     }
@@ -26,6 +27,8 @@ export class ColorSlotDirective {
 
         this.addNewClass();
         this.removeOldClass();
+
+        this._color = this.currentColor;
 
         this.slotChanged.emit(true);
 
@@ -42,5 +45,9 @@ export class ColorSlotDirective {
         this.renderer.setElementClass(
             this.el.nativeElement, this.currentColor, true
         )
+    }
+
+    get color() {
+        return this._color || '';
     }
 }

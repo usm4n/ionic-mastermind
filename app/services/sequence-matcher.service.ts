@@ -10,6 +10,7 @@ export class SequenceMatcherService {
 
     constructor(private sequenceGenerator: SequenceGeneratorService) {
         this.currentSequence = this.sequenceGenerator.sequence;
+        console.log(this.currentSequence);
     }
 
     matchSequence(sequence: string[]): string[] {

@@ -28,5 +28,16 @@ export class GameRowComponent {
             .filter(item => item.color.length > 0);
         this.activateResultColumn = this._colorSequence.length === 4;
     }
+
+    checkUserColorSequence() {
+        let colorSequence = this.colorSequence;
+        
+        let matched = this.sequenceMatcher.matchSequence(colorSequence);
+        console.log(matched);
+    }
+
+    get colorSequence() {
+        return this._colorSequence.map(item => item.color);
+    }
 }
 

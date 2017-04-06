@@ -38,6 +38,7 @@ main-scene {
         border: 2px solid #bdae93;
         border-radius: 5px;
         padding: 3px;
+        transition: background-color .1s ease-out;
     }
     .color-chooser {
         margin-top: 5px;
@@ -56,6 +57,7 @@ main-scene {
     .slot {
         height: 30px;
         border-radius: 50%;
+        transition: background-color .1s ease-out;
     }
     .orange {
         background-color: #fe8019;

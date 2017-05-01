@@ -1,9 +1,18 @@
-<ion-row class="row-height" [ngClass]="{'row-inactive': activeRow !== currentRow, 'row-active': activeRow === currentRow}">
+<ion-row class="row-height" [ngClass]="{'row-inactive': activeRow > currentRow, 'row-active': activeRow <= currentRow}">
     <ion-col class="result-col" [ngClass]="{'inactive' : ! activateResultColumn, 'active' : activateResultColumn}">
-        <div class="slot" (click)="checkUserColorSequence()"></div>
+        <div class="slot" (click)="checkUserColorSequence()">
+            <ion-row>
+                <ion-col class="match" [ngClass]="{'black': match[0] === 'exists', 'grey': match[0] === 'includes'}"></ion-col>
+                <ion-col class="match" [ngClass]="{'black': match[1] === 'exists', 'grey': match[1] === 'includes'}"></ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col class="match" [ngClass]="{'black': match[2] === 'exists', 'grey': match[2] === 'includes'}"></ion-col>
+                <ion-col class="match" [ngClass]="{'black': match[3] === 'exists', 'grey': match[3] === 'includes'}"></ion-col>
+            </ion-row>
+        </div>
     </ion-col>
     <ion-col *ngFor="let col of [1, 2, 3, 4]; let localFirst = first" [class.offset-1]="localFirst === true">
-        <div *ngIf="currentRow !== activeRow" class="slot"></div>
-        <div *ngIf="currentRow === activeRow" colorSlot [currentColor]="currentColor" (slotChanged)="updateRow()"></div>
+        <div *ngIf="currentRow < activeRow" class="slot"></div>
+        <div *ngIf="currentRow >= activeRow" colorSlot [inactive]="currentRow !== activeRow" [currentColor]="currentColor" (slotChanged)="updateRow()"></div>
     </ion-col>
 </ion-row>

@@ -8,18 +8,12 @@ main-scene {
     .row-height {
         height: 40px;
     }
-    .timer {
-        height: 40px;
-        color: #aabcce;
-        font-size: .9em;
-        font-weight: bold;
-        margin-bottom: 50px;
-    }
-    .timer .col {
-        background-color: #223b54;
-        border: 1px solid #0b1c2c;
-        border-radius: 4px;
-        box-shadow: inset 0px 0px 7px #0b1c2c;
+    .button-reset {
+        border-radius: 5px;
+        background-color: #ebdbb2;
+        font-size: 1.8em;
+        color: #928374;
+        text-align: center;
     }
     .game-wraper {
         padding: 0;
@@ -41,10 +35,32 @@ main-scene {
         transition: background-color .1s ease-out;
     }
     .color-chooser {
-        margin-top: 5px;
+        margin-top: 10px;
     }
-    .color-chooser .col {
+    .hidden-sequence {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+    .hidden-sequence .col:first-child {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    .hidden-sequence .col:last-child {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    .color-chooser .col, .hidden-sequence .col {
         background-color: #ebdbb2;
+    }
+    .hidden-sequence .slot {
+        background-color: #bdae93;
+    }
+    .hidden-sequence .slot::after {
+        content: '?';
+        color: #928374;
+        font-weight: bold;
+        line-height: 30px;
     }
     .color-chooser .row:first-child .col {
         border-top-left-radius: 5px;
@@ -58,6 +74,24 @@ main-scene {
         height: 30px;
         border-radius: 50%;
         transition: background-color .1s ease-out;
+    }
+    .result-col.inactive .match {
+        height: 15px;
+        border-radius: 50%;
+        background-color: #928374;
+        border: 2px solid #bdae93;
+    }
+    .result-col.active .match {
+        height: 15px;
+        border-radius: 50%;
+        background-color: #F9f5d7;
+        border: 2px solid #bdae93;
+        &.grey {
+            background-color: #928374;
+        }
+        &.black {
+            background-color: #3c3836;
+        }
     }
     .orange {
         background-color: #fe8019;
@@ -89,5 +123,5 @@ main-scene {
     .black {
         background-color: #3c3836;
     }
-}
+ }
 

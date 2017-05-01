@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import shuffle from 'lodash/shuffle';
 import includes from 'lodash/includes';
 
 import { SequenceGeneratorService } from './sequence-generator.service';
@@ -17,14 +16,16 @@ export class SequenceMatcherService {
         let matches = sequence.map((value, index) => {
             if (includes(this.currentSequence, value)) {
                 if (index === this.currentSequence.indexOf(value)) {
-                    return 'matched';
+                    return 'exists';
                 } else { return 'includes'; }
             } else {
-                return 'nomatch';
+                return 'notexist';
             }
         });
 
-        return shuffle(matches);
+        matches.sort();
+
+        return matches;
     }
 }
 

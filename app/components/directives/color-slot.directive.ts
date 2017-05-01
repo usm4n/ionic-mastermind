@@ -12,6 +12,7 @@ import { Directive,
     selector: '[colorSlot]' // Attribute selector
 })
 export class ColorSlotDirective {
+    @Input() inactive: boolean;
     @Input() currentColor: string;
     @Output() slotChanged = new EventEmitter<boolean>();
     @HostBinding('class.slot') slot = true;
@@ -23,7 +24,8 @@ export class ColorSlotDirective {
     }
 
     @HostListener('click') changeSlotColor() {
-        if (this.currentColor === this.oldColor) {return;}
+        console.log(this.inactive);
+        if (this.currentColor === this.oldColor || this.inactive === true) {return;}
 
         this.addNewClass();
         this.removeOldClass();

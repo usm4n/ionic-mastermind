@@ -1,6 +1,8 @@
 import {
     Component,
     Input,
+    Output,
+    EventEmitter,
     ViewChildren,
     QueryList
 } from '@angular/core';
@@ -14,11 +16,15 @@ import { ColorSlotDirective } from './directives/color-slot.directive';
 export class GameRowComponent {
     @Input() currentColor: string;
     @Input() currentRow: number;
-    @Input() activeRow: string;
+    @Input() activeRow: number;
+
+    @Output() rowMatched: EventEmitter<boolean> = new EventEmitter<boolean>();
+
     @ViewChildren(ColorSlotDirective) private children: QueryList<ColorSlotDirective>;
 
-    private _colorSequence : ColorSlotDirective[];
+    private _colorSequence: ColorSlotDirective[];
 
+    match: string[] = ['nomatch', 'nomatch', 'nomatch', 'nomatch'];
     activateResultColumn: boolean = false;
 
     constructor(private sequenceMatcher: SequenceMatcherService){}
@@ -30,10 +36,16 @@ export class GameRowComponent {
     }
 
     checkUserColorSequence() {
-        let colorSequence = this.colorSequence;
-        
-        let matched = this.sequenceMatcher.matchSequence(colorSequence);
-        console.log(matched);
+        if (this.currentRow !== this.activeRow ||
+            this.activateResultColumn === false) return;
+
+        this.match = this.sequenceMatcher.matchSequence(this.colorSequence);
+        console.log(this.match);
+        this.rowMatched.emit(this.reduceMatch(this.match));
+    }
+
+    reduceMatch(matchedSeq: string[]): boolean {
+        return matchedSeq.reduce((acc, value) => acc && (value === 'exists'), true);
     }
 
     get colorSequence() {

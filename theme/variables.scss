@@ -78,3 +78,13 @@ $colors: (
 @import "noto-sans";
 
 $grid-columns: 8 !default;
+
+$modal-inset-min-width: 320px !default;
+$modal-inset-min-height-small:  400px !default;
+$modal-inset-min-height-large:  480px !default;
+
+$modal-inset-width: 240px !default;
+$modal-inset-height-small:      300px !default;
+
+$modal-inset-height-large:      300px !default;
+

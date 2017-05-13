@@ -38,15 +38,23 @@ export class ColorSlotDirective {
     }
 
     removeOldClass() {
-        this.renderer.setElementClass(
-            this.el.nativeElement, this.oldColor, false
-        );
+        if (this.oldColor) {
+            this.renderer.setElementClass(
+                this.el.nativeElement, this.oldColor, false
+            );
+        }
     }
 
     addNewClass() {
         this.renderer.setElementClass(
             this.el.nativeElement, this.currentColor, true
         )
+    }
+
+    resetDirective() {
+        this._color = '';
+        this.removeOldClass();
+        this.oldColor = '';
     }
 
     get color() {

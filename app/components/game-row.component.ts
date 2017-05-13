@@ -17,8 +17,10 @@ export class GameRowComponent {
     @Input() currentColor: string;
     @Input() currentRow: number;
     @Input() activeRow: number;
+    @Input() resetRow: boolean;
 
     @Output() rowMatched: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() resetRowChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     @ViewChildren(ColorSlotDirective) private children: QueryList<ColorSlotDirective>;
 
@@ -28,6 +30,20 @@ export class GameRowComponent {
     activateResultColumn: boolean = false;
 
     constructor(private sequenceMatcher: SequenceMatcherService){}
+
+    ngOnInit() {
+        console.log(this.currentRow, this.activeRow);
+    }
+
+    ngOnChanges() {
+        if(this.resetRow) {
+            this.resetRowData();
+            if(this.currentRow === this.activeRow) {
+                //wait for this tick to end
+                setTimeout(_ => this.resetRowChange.emit(false));
+            }
+        }
+    }
 
     updateRow() {
         this._colorSequence = this.children
@@ -46,6 +62,12 @@ export class GameRowComponent {
 
     reduceMatch(matchedSeq: string[]): boolean {
         return matchedSeq.reduce((acc, value) => acc && (value === 'exists'), true);
+    }
+
+    resetRowData() {
+        this.match = this.match.map(v => 'nomatch');
+        this.children.forEach(c => c.resetDirective());
+        this.updateRow();
     }
 
     get colorSequence() {

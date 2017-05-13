@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { SequenceGeneratorService } from '../services/sequence-generator.service';
 import { GameTimerComponent } from '../components/game-timer.component';
+import { SequenceMatcherService } from '../services/sequence-matcher.service';
 //import { MenuModal } from '../modals/menu.modal';
 
 @Component({
@@ -14,9 +15,11 @@ export class MainScene implements OnInit {
     rows: number[];
     activeRow: number = 10;
     currentColor: string | null;
+    reset: boolean = false;
 
     constructor(public navCtrl: NavController,
         public sequenceGenerator: SequenceGeneratorService,
+        public sequenceMatcherService: SequenceMatcherService,
         public modalContrller: ModalController) {
         this.rows = this.fillRows();
     }
@@ -28,9 +31,14 @@ export class MainScene implements OnInit {
 
     setUp() {
         this.sequenceGenerator.generateSequence();
+        this.sequenceMatcherService.setUpSequence();
         this.currentColor = null;
         this.activeRow = 10;
-        this.timer.play();
+    }
+
+    resetGame() {
+        this.setUp();
+        this.reset = true;
     }
 
     update(event) {

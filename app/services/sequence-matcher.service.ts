@@ -8,7 +8,7 @@ export class SequenceMatcherService {
     private currentSequence: string[];
 
     constructor(private sequenceGenerator: SequenceGeneratorService) {
-        this.currentSequence = this.sequenceGenerator.sequence;
+        this.setUpSequence();
         console.log(this.currentSequence);
     }
 
@@ -36,6 +36,10 @@ export class SequenceMatcherService {
         matches.sort();
 
         return matches;
+    }
+
+    setUpSequence() {
+        this.currentSequence = this.sequenceGenerator.sequence;
     }
 }
 

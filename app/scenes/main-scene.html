@@ -25,14 +25,14 @@
             <ion-col offset-2 no-padding>
                 <ion-row [style.margin-top.px]="15">
                     <ion-col class="button-reset">
-                        <div class="slot"><ion-icon name="refresh"></ion-icon></div>
+                        <div class="slot" (click)="resetGame()"><ion-icon name="refresh"></ion-icon></div>
                     </ion-col>
                 </ion-row>
             </ion-col>
         </ion-row>
         <ion-row>
             <ion-col col-6 class="game-wraper">
-                <game-row [currentColor]="currentColor" [activeRow]="activeRow" (rowMatched)="update($event)" *ngFor="let row of rows" [currentRow]="row"></game-row>
+                <game-row [currentColor]="currentColor" [activeRow]="activeRow" (rowMatched)="update($event)" *ngFor="let row of rows" [currentRow]="row" [(resetRow)]="reset"></game-row>
             </ion-col>
             <ion-col col-1 offset-1 no-padding class="color-chooser">
                 <color-chooser [(selectedColor)]="currentColor"></color-chooser>

@@ -14,7 +14,7 @@ export class SequenceGeneratorService {
     }
 
     get sequence() {
-        return this._sequence;
+        return this._sequence || [];
     }
 }
 

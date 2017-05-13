@@ -1,24 +1,54 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'game-timer',
-    template: `<p>{{getFormatedTimer()}}</p>`
+    template: `{{getFormatedTimer()}}`
 })
 export class GameTimerComponent implements OnInit {
-    timer$ : Observable<number>;
+    timerCtrl : Subject<boolean> = new Subject<boolean>();
+    timer$ : Observable<any>;
+    tick$ : Observable<number>;
+
+    timerSubscription: ISubscription;
+
     timer = {min: 0, sec: 0, micSec: 0, counter: 0};
 
     constructor() {
-        this.timer$ = this.getTimerStream();
+        this.tick$ = this.getTickStream();
+        this.timer$ = this.createTimer();
     }
 
     ngOnInit() {
-        this.timer$.subscribe(() => this.setTimerValues());
+        this.timerSubscription = this.timer$.subscribe(() => this.setTimerValues());
     }
 
-    getTimerStream() {
+    getTickStream() {
         return Observable.interval(100);
+    }
+
+    createTimer() {
+        return this.timerCtrl
+            .switchMap(state => !state ? Observable.never() : this.tick$);
+    }
+
+    play() {
+        this.timerCtrl.next(true);
+    }
+
+    pause() {
+        this.timerCtrl.next(false);
+    }
+
+    reset() {
+        this.timer = {
+            min: 0,
+            sec: 0,
+            micSec: 0,
+            counter: 0
+        }
     }
 
     setTimerValues() {
@@ -38,5 +68,9 @@ export class GameTimerComponent implements OnInit {
         return (this.timer.min < 10 ? '0' : '') + this.timer.min + ' : '
             + (this.timer.sec < 10 ? '0' : '') + this.timer.sec + ' : 0'
             + this.timer.micSec;
+    }
+
+    ngOnDestroy() {
+        this.timerSubscription.unsubscribe();
     }
 }

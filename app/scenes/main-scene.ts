@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { SequenceGeneratorService } from '../services/sequence-generator.service';
-import { MenuModal } from '../modals/menu.modal';
+import { GameTimerComponent } from '../components/game-timer.component';
+//import { MenuModal } from '../modals/menu.modal';
 
 @Component({
     selector: 'main-scene',
     templateUrl: 'main-scene.html'
 })
 export class MainScene implements OnInit {
+    @ViewChild(GameTimerComponent) timer;
+
     rows: number[];
     activeRow: number = 10;
     currentColor: string | null;
@@ -19,8 +22,15 @@ export class MainScene implements OnInit {
     }
 
     ngOnInit() {
-        this.modalContrller.create(MenuModal).present();
+//        this.modalContrller.create(MenuModal).present();
+        this.setUp();
+    }
+
+    setUp() {
         this.sequenceGenerator.generateSequence();
+        this.currentColor = null;
+        this.activeRow = 10;
+        this.timer.play();
     }
 
     update(event) {
@@ -32,5 +42,4 @@ export class MainScene implements OnInit {
             .fill(0)
             .map((v, i) => i + 1);
     }
-
 }

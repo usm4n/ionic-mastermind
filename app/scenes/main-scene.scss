@@ -5,6 +5,46 @@ main-scene {
     .offset-1 {
         margin-left: 12.5%;
     }
+    .control-bar {
+        overflow: hidden;
+        .controls {
+            float: right;
+            text-align: center;
+            list-style: none;
+            margin: 0;
+            padding-left: 0;
+            .control {
+                display: inline-block;
+                padding: 0 5px 5px;
+                a {
+                    display: inline-block;
+                    background-color: #928374;
+                    border-radius: 3px;
+                    color: #f9f5d7;
+                    padding: 4px 5px;
+                    box-shadow: 0 3px 0 #ebdbb2, 0 -1px #f9f5d7 inset;
+                }
+            }
+        }
+        .best-score {
+            float:left;
+            background-color: #98971a;
+            padding: 4px 5px;
+            color: #f9f5d7;
+            border-radius: 3px;
+            .badge {
+                background-color: #f9f5d7;
+                color: #928374;
+                padding: 0 5px;
+                border-radius: 3px;
+            }
+        }
+        &:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    }
     .row-height {
         height: 40px;
     }

@@ -13,11 +13,21 @@ export class SequenceMatcherService {
     }
 
     matchSequence(sequence: string[]): string[] {
-        let matches = sequence.map((value, index) => {
-            if (includes(this.currentSequence, value)) {
-                if (index === this.currentSequence.indexOf(value)) {
+        let lookup = [...this.currentSequence];
+
+        let matches = sequence.map((value, index, sequence) => {
+            let lookupIndex = lookup.indexOf(value);
+            if (includes(lookup, value)) {
+                if (index === lookupIndex) {
+                    lookup[lookupIndex] = 'visited';
                     return 'exists';
-                } else { return 'includes'; }
+                } else {
+                    if (includes(sequence, value, index + 1)) {
+                        return 'notexist';
+                    }
+                    lookup[lookupIndex] = 'visited';
+                    return 'includes';
+                }
             } else {
                 return 'notexist';
             }

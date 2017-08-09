@@ -3,7 +3,7 @@ import { NavController, ModalController } from 'ionic-angular';
 import { SequenceGeneratorService } from '../services/sequence-generator.service';
 import { GameTimerComponent } from '../components/game-timer.component';
 import { SequenceMatcherService } from '../services/sequence-matcher.service';
-//import { MenuModal } from '../modals/menu.modal';
+import { MenuModal } from './modals/menu.modal';
 
 @Component({
     selector: 'main-scene',
@@ -25,7 +25,7 @@ export class MainScene implements OnInit {
     }
 
     ngOnInit() {
-//        this.modalContrller.create(MenuModal).present();
+        this.modalContrller.create(MenuModal).present();
         this.setUp();
     }
 

@@ -29,10 +29,12 @@ export class GameRowComponent {
     match: string[] = ['nomatch', 'nomatch', 'nomatch', 'nomatch'];
     activateResultColumn: boolean = false;
 
-    constructor(private sequenceMatcher: SequenceMatcherService){}
+    constructor(private sequenceMatcher: SequenceMatcherService) {
+        //
+    }
 
     ngOnInit() {
-        console.log(this.currentRow, this.activeRow);
+        //
     }
 
     ngOnChanges() {

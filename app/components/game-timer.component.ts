@@ -65,8 +65,8 @@ export class GameTimerComponent implements OnInit {
     }
 
     getFormatedTimer() {
-        return (this.timer.min < 10 ? '0' : '') + this.timer.min + ' : '
-            + (this.timer.sec < 10 ? '0' : '') + this.timer.sec + ' : 0'
+        return (this.timer.min < 10 ? '0' : '') + this.timer.min + ':'
+            + (this.timer.sec < 10 ? '0' : '') + this.timer.sec + ':0'
             + this.timer.micSec;
     }
 

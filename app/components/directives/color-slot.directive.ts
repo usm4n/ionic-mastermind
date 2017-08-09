@@ -24,7 +24,6 @@ export class ColorSlotDirective {
     }
 
     @HostListener('click') changeSlotColor() {
-        console.log(this.inactive);
         if (this.currentColor === this.oldColor || this.inactive === true) {return;}
 
         this.addNewClass();

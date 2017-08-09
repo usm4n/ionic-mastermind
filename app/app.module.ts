@@ -8,10 +8,10 @@ import { GameRowComponent } from './components/game-row.component';
 import { GameTimerComponent } from './components/game-timer.component';
 import { ColorSlotDirective } from './components/directives/color-slot.directive';
 
-import { GAME_CONFIG, CONFIG} from './services/game-config.service';
+import { GAME_CONFIG, CONFIG} from './services/game-settings.service';
 import { SequenceGeneratorService } from './services/sequence-generator.service';
 import { SequenceMatcherService } from './services/sequence-matcher.service';
-import { MenuModal } from './modals/menu.modal';
+import { MenuModal } from './scenes/modals/menu.modal';
 
 @NgModule({
     declarations: [

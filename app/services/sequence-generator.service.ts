@@ -1,21 +1,23 @@
 import { Injectable, Inject } from '@angular/core';
 
 import sampleSize from 'lodash/sampleSize'
-import { GAME_CONFIG } from './game-config.service';
+import { GameSettingsService } from './game-settings.service';
 
 @Injectable()
 export class SequenceGeneratorService {
     private _sequence: string[];
 
-    constructor(@Inject(GAME_CONFIG) private config) {}
+    constructor(public settingsService: GameSettingsService) {}
 
     generateSequence() {
-        this._sequence = sampleSize<string>(this.config.colors, 4);
+        //use withLatesFrom with a subject to control the generation of the sequence.
+        this.settingsService
+            .settings$
+            .subscribe(settings => this._sequence = sampleSize<string>(settings['colors'], 4));
     }
 
     get sequence() {
         return this._sequence || [];
     }
 }
-
 

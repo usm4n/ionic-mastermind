@@ -1,4 +1,4 @@
-<ion-row class="row-height" *ngFor="let colorClass of colorClasses">
+<ion-row class="row-height" *ngFor="let colorClass of colorClasses$ | async">
     <ion-col>
         <div [@chooserState]="selectedColor === colorClass" class="slot {{colorClass}}" (click)="updateColor(colorClass)"></div>
     </ion-col>

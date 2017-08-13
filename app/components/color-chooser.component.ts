@@ -3,7 +3,6 @@ import {
     Input,
     Output,
     EventEmitter,
-    Inject,
     trigger,
     state,
     style,
@@ -11,7 +10,9 @@ import {
     transition
 } from '@angular/core';
 
-import { GAME_CONFIG } from '../services/game-config.service'
+import { Observable } from 'rxjs/Observable';
+
+import { GameSettingsService } from '../services/game-settings.service'
 
 @Component({
     selector: 'color-chooser',
@@ -33,9 +34,9 @@ export class ColorChooserComponent {
     @Input() selectedColor: string;
     @Output() selectedColorChange = new EventEmitter<string>();
 
-    colorClasses: string[];
-    constructor(@Inject(GAME_CONFIG) private config) {
-        this.colorClasses = config.colors;
+    colorClasses$: Observable<string[]>;
+    constructor(private settings: GameSettingsService) {
+        this.colorClasses$ = this.settings.colors$;
     }
 
     updateColor(color) {

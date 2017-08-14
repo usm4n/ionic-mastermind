@@ -1,23 +1,43 @@
-import { Injectable, Inject } from '@angular/core';
+import { Subject, BehaviorSubject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { GameSettingsService } from './game-settings.service';
 
 import sampleSize from 'lodash/sampleSize'
-import { GameSettingsService } from './game-settings.service';
+
 
 @Injectable()
 export class SequenceGeneratorService {
-    private _sequence: string[];
+    private _generator: Subject<boolean> = new Subject<boolean>();
+    private _sequence: BehaviorSubject<string[]> = new BehaviorSubject(<string[]> []);
 
-    constructor(public settingsService: GameSettingsService) {}
+    constructor(public settingsService: GameSettingsService) {
+        this._generator
+            .withLatestFrom(
+                this.settingsService.colors$,
+                this.settingsService.duplicates$,
+                (_, colors, duplicates) => {
+                    return !duplicates
+                        ? sampleSize<string>(colors, 4)
+                        : [...sampleSize<string>(colors, 2), ...sampleSize<string>(colors, 2)];
+                })
+            .subscribe((sequence: string[]) => {
+                console.log('in generator')
+                console.log(sequence);
+                this._sequence.next(sequence);
+            });
+
+    }
 
     generateSequence() {
-        //use withLatesFrom with a subject to control the generation of the sequence.
-        this.settingsService
-            .settings$
-            .subscribe(settings => this._sequence = sampleSize<string>(settings['colors'], 4));
+        this._generator.next(true);
     }
 
-    get sequence() {
-        return this._sequence || [];
+    get sequence$() {
+        return this._sequence.asObservable();
     }
+
+    //get stop$() {
+        ////  TODO:  implement unsubscribe // 
+    //}
 }
 

@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { SequenceGeneratorService } from '../services/sequence-generator.service';
 import { GameTimerComponent } from '../components/game-timer.component';
-import { SequenceMatcherService } from '../services/sequence-matcher.service';
 import { MenuModal } from './modals/menu.modal';
+import { GameSettingsService } from '../services/game-settings.service';
 
 @Component({
     selector: 'main-scene',
@@ -13,25 +13,28 @@ export class MainScene implements OnInit {
     @ViewChild(GameTimerComponent) timer;
 
     rows: number[];
+    theme: string = 'defualt';
     activeRow: number = 10;
     currentColor: string | null;
     reset: boolean = false;
 
     constructor(public navCtrl: NavController,
+        public settingsService: GameSettingsService,
         public sequenceGenerator: SequenceGeneratorService,
-        public sequenceMatcherService: SequenceMatcherService,
         public modalContrller: ModalController) {
         this.rows = this.fillRows();
     }
 
     ngOnInit() {
         this.modalContrller.create(MenuModal).present();
+        this.settingsService
+            .theme$
+            .subscribe((theme: string) => {this.theme = theme});
         this.setUp();
     }
 
     setUp() {
         this.sequenceGenerator.generateSequence();
-        this.sequenceMatcherService.setUpSequence();
         this.currentColor = null;
         this.activeRow = 10;
     }

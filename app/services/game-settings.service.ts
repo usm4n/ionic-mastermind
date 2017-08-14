@@ -25,8 +25,8 @@ const CONFIG: Settings = {
         'black'
     ],
     difficulty: '',
-    duplicates: false,
-    theme: 'default'
+    duplicates: true,
+    theme: 'solarized'
 };
 
 @Injectable()
@@ -66,7 +66,7 @@ export class GameSettingsService {
             .withLatestFrom(this.difficulty$, (colors: string[], difficulty) => {
                 switch (difficulty) {
                     case 'easy':
-                        return colors.slice(0, 5);
+                        return colors.slice(0, 6);
                     case 'medium':
                         return colors.slice(0, 8);
                     default:

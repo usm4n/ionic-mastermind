@@ -1,4 +1,5 @@
 import { NgModule, ErrorHandler } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -26,7 +27,8 @@ import { MenuModal } from './scenes/modals/menu.modal';
     ],
     imports: [
         IonicModule.forRoot(MyApp),
-        IonicStorageModule.forRoot()
+        IonicStorageModule.forRoot(),
+        ReactiveFormsModule,
     ],
     bootstrap: [IonicApp],
     entryComponents: [

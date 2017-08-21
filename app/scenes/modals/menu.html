@@ -12,5 +12,39 @@
 </ion-header>
 
 <ion-content>
-    <p>Hello</p>
+    <form [formGroup]="settingsForm">
+        <ion-item-group radio-group formControlName="difficulty">
+            <ion-item-divider color="light">Difficulty</ion-item-divider>
+            <ion-item>
+                <ion-label>Hard</ion-label>
+                <ion-radio value="hard"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label>Medium</ion-label>
+                <ion-radio value="medium"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label>Easy</ion-label>
+                <ion-radio value="easy"></ion-radio>
+            </ion-item>
+        </ion-item-group>
+        <ion-item-group>
+            <ion-item-divider color="light">Duplicates</ion-item-divider>
+            <ion-item>
+                <ion-label>Enable/Disable</ion-label>
+                <ion-toggle formControlName="duplicates"></ion-toggle>
+            </ion-item>
+        </ion-item-group>
+        <ion-item-group radio-group formControlName="theme">
+            <ion-item-divider color="light">Theme</ion-item-divider>
+            <ion-item>
+                <ion-label>Default</ion-label>
+                <ion-radio value="default"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label>Alternate</ion-label>
+                <ion-radio value="solarized"></ion-radio>
+            </ion-item>
+        </ion-item-group>
+    </form>
 </ion-content>

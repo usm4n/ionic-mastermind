@@ -24,9 +24,9 @@ const CONFIG: Settings = {
         'grey',
         'black'
     ],
-    difficulty: '',
-    duplicates: true,
-    theme: 'solarized'
+    difficulty: 'hard',
+    duplicates: false,
+    theme: 'default'
 };
 
 @Injectable()
@@ -57,6 +57,16 @@ export class GameSettingsService {
                         ? observer.error(new Error('null value'))
                         : observer.next(settings);
                 });
+        });
+    }
+
+    set(settings: {difficulty: string, theme: string, duplicates: boolean}): void {
+        settings = Object.assign({}, this._settings.value, settings);
+
+        this.storage.set('__settings', settings)
+        .then((value) => {
+            console.log(value);
+            this._settings.next(value);
         });
     }
 

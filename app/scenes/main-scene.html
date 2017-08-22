@@ -5,7 +5,7 @@
                 <!--<a>Reset</a>-->
             <!--</li>-->
             <li class="control">
-                <a>Menu</a>
+                <a (click)="showMenu()">Menu</a>
             </li>
         </ul>
         <div class="best-score">
@@ -25,7 +25,7 @@
             <ion-col offset-2 no-padding>
                 <ion-row [style.margin-top.px]="15">
                     <ion-col class="button-reset">
-                        <div class="slot" (click)="resetGame(); theme = 'default'"><ion-icon name="refresh"></ion-icon></div>
+                        <div class="slot" (click)="resetGame()"><ion-icon name="refresh"></ion-icon></div>
                     </ion-col>
                 </ion-row>
             </ion-col>
@@ -42,7 +42,7 @@
     <div>
         <p>{{currentColor | json}}</p>
         <p>
-            {{sequenceGenerator.sequence | json}}
+            {{sequenceGenerator.sequence$ | async | json}}
         </p>
     </div>
 </ion-content>

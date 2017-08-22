@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 import { ViewController } from 'ionic-angular';
 import { Settings } from '../../models/settings';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -9,6 +10,7 @@ import { GameSettingsService } from '../../services/game-settings.service';
 })
 export class MenuModal {
     settingsForm: FormGroup;
+    dissmissEvent: Subject<boolean> = new Subject<boolean>();
 
     constructor(public viewCtrl: ViewController,
         private settingsService: GameSettingsService,
@@ -21,12 +23,14 @@ export class MenuModal {
 
         this.settingsService
             .settings$
-            .subscribe((settings: Settings) => this.settingsForm.patchValue(settings));
+            .takeUntil(this.dissmissEvent)
+            .subscribe((settings: Settings) => this.settingsForm.patchValue(settings, {emitEvent: false}));
 
         this.settingsForm
             .valueChanges
             .debounceTime(500)
             .distinctUntilChanged(this.comparator())
+            .takeUntil(this.dissmissEvent)
             .subscribe((value) => this.settingsService.set(value));
     }
 
@@ -40,7 +44,9 @@ export class MenuModal {
     }
 
     dismiss() {
-        this.viewCtrl.dismiss();
+        this.viewCtrl
+            .dismiss()
+            .then(() => this.dissmissEvent.next(true));
     }
 
     comparator(): (prev: any, next: any) => boolean {

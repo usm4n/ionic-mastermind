@@ -27,6 +27,7 @@ export class MainScene implements OnInit {
 
     ngOnInit() {
         this.modalContrller.create(MenuModal).present();
+        
         this.settingsService
             .theme$
             .subscribe((theme: string) => {this.theme = theme});
@@ -37,6 +38,11 @@ export class MainScene implements OnInit {
         this.sequenceGenerator.generateSequence();
         this.currentColor = null;
         this.activeRow = 10;
+        this.timer.play();
+    }
+
+    showMenu() {
+        this.modalContrller.create(MenuModal).present();
     }
 
     resetGame() {

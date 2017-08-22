@@ -36,17 +36,18 @@ export class GameSettingsService {
     settings$: Observable<Settings>;
 
     constructor(private storage: Storage) {
-        this.settings$ = this.setup();
+        this._settings = new BehaviorSubject(<Settings>{});
+        this.settings$ = this._settings.asObservable();
+
+        this.setup();
     }
 
     setup() {
-        return this.readStorage()
+        this.readStorage()
                 .catch(() => Observable.empty())
                 .defaultIfEmpty(CONFIG)
                 .do((settings) => console.log(settings))
-                .do((settings: Settings) => this._settings = new BehaviorSubject<Settings>(settings))
-                .switchMap((settings) => this._settings.asObservable())
-                .share();
+                .subscribe(this._settings);
     }
 
     readStorage() {

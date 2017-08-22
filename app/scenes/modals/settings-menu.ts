@@ -6,9 +6,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { GameSettingsService } from '../../services/game-settings.service';
 
 @Component({
-    templateUrl: 'menu.html'
+    templateUrl: 'settings-menu.html'
 })
-export class MenuModal {
+export class SettingsMenu {
     settingsForm: FormGroup;
     dissmissEvent: Subject<boolean> = new Subject<boolean>();
 

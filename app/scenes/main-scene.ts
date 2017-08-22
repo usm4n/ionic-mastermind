@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { SequenceGeneratorService } from '../services/sequence-generator.service';
 import { GameTimerComponent } from '../components/game-timer.component';
-import { MenuModal } from './modals/menu.modal';
+import { MenuModal } from './modals/menu-modal';
 import { GameSettingsService } from '../services/game-settings.service';
 
 @Component({

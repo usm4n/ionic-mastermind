@@ -13,7 +13,9 @@ import { ColorSlotDirective } from './components/directives/color-slot.directive
 import { GameSettingsService } from './services/game-settings.service';
 import { SequenceGeneratorService } from './services/sequence-generator.service';
 import { SequenceMatcherService } from './services/sequence-matcher.service';
-import { MenuModal } from './scenes/modals/menu.modal';
+import { MenuModal } from './scenes/modals/menu-modal';
+import { MainMenu } from './scenes/modals/main-menu';
+import { SettingsMenu } from './scenes/modals/settings-menu';
 
 @NgModule({
     declarations: [
@@ -23,7 +25,9 @@ import { MenuModal } from './scenes/modals/menu.modal';
         ColorChooserComponent,
         GameRowComponent,
         ColorSlotDirective,
-        MenuModal
+        MenuModal,
+        MainMenu,
+        SettingsMenu
     ],
     imports: [
         IonicModule.forRoot(MyApp),
@@ -34,7 +38,9 @@ import { MenuModal } from './scenes/modals/menu.modal';
     entryComponents: [
         MyApp,
         MainScene,
-        MenuModal
+        MenuModal,
+        MainMenu,
+        SettingsMenu
     ],
     providers: [
         GameSettingsService,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { ViewController } from 'ionic-angular';
 import { Settings } from '../../models/settings';
@@ -8,7 +8,7 @@ import { GameSettingsService } from '../../services/game-settings.service';
 @Component({
     templateUrl: 'settings-menu.html'
 })
-export class SettingsMenu {
+export class SettingsMenu implements OnInit {
     settingsForm: FormGroup;
     dissmissEvent: Subject<boolean> = new Subject<boolean>();
 

@@ -8,6 +8,7 @@ import sampleSize from 'lodash/sampleSize'
 @Injectable()
 export class SequenceGeneratorService {
     private _generator: Subject<boolean> = new Subject<boolean>();
+    private _stop: Subject<boolean> = new Subject<boolean>();
     private _sequence: BehaviorSubject<string[]> = new BehaviorSubject(<string[]> []);
 
     constructor(public settingsService: GameSettingsService) {
@@ -20,6 +21,7 @@ export class SequenceGeneratorService {
                         ? sampleSize<string>(colors, 4)
                         : [...sampleSize<string>(colors, 2), ...sampleSize<string>(colors, 2)];
                 })
+            .takeUntil(this._stop)
             .subscribe((sequence: string[]) => {
                 console.log('in generator')
                 console.log(sequence);
@@ -36,8 +38,8 @@ export class SequenceGeneratorService {
         return this._sequence.asObservable();
     }
 
-    //get stop$() {
-        ////  TODO:  implement unsubscribe // 
-    //}
+    stop() {
+        this._stop.next(true);
+    }
 }
 

@@ -33,20 +33,21 @@ $colors: (
 
 $themes: (
     default: (
-        colors: (
-              (orange , #fe8019),
-              (yellow , #d79921),
-              (green  , #98971a),
-              (cyan   , #2aa198),
-              (blue   , #268bd2),
-              (magenta, #6c71c4),
-              (pink   , #d33682),
-              (red    , #cc241d),
-              (grey   , #928374),
-              (black  , #3c3836),
-        ),
-         background: #f9f5d7,
-         game-wraper: #bdae93
+        orange: #fe8019,
+        yellow: #d79921,
+        green:  #98971a,
+        cyan:   #2aa198,
+        blue:   #268bd2,
+        magenta: #6c71c4,
+        pink:    #d33682,
+        red:    #cc241d,
+        grey:   #928374,
+        black: #3c3836,
+        light: #fbf1c7,
+        background: #f9f5d7,
+        foreground: #928374,
+        control-bg: #ebdbb2,
+        game-wraper: #bdae93
     ),
     alternate: (
     //

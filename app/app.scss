@@ -15,17 +15,23 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 @mixin theme($color-map) {
+    $black: map-get($color-map, black);
+    $timer-bg: map-get($color-map, green);
+    $light-bg: map-get($color-map, light);
     $main-bg: map-get($color-map, 'background');
+    $main-fg: map-get($color-map, 'foreground');
+    $control-bg: map-get($color-map, 'control-bg');
     $game-wraper: map-get($color-map, 'game-wraper');
+
     main-scene {
         .main-bg {
             background-color: $main-bg;
         }
         .button-reset {
             border-radius: 5px;
-            background-color: #ebdbb2;
+            background-color: $control-bg;
             font-size: 1.8em;
-            color: #928374;
+            color: $main-fg;
             text-align: center;
         }
         .game-wraper {
@@ -35,24 +41,24 @@
             border-radius: 3px;
         }
         .row-inactive .col, .result-col.inactive {
-            background-color: #928374;
+            background-color: $main-fg;
             border: 2px solid $game-wraper;
             border-radius: 5px;
             padding: 3px;
         }
         .row-active .col:not(.result-col), .result-col.active {
-            background-color: #fbf1c7;
+            background-color: $light-bg;
             border: 2px solid $game-wraper;
             border-radius: 5px;
             padding: 3px;
             transition: background-color .1s ease-out;
         }
         .color-chooser .col, .hidden-sequence .col {
-            background-color: #ebdbb2;
+            background-color: $control-bg;
         }
         .hidden-sequence .slot {
             background-color: $game-wraper;
-            color: #928374;
+            color: $main-fg;
             font-weight: bold;
             line-height: 30px;
         }
@@ -61,7 +67,7 @@
                 .match {
                     height: 15px;
                     border-radius: 50%;
-                    background-color: #928374;
+                    background-color: $main-fg;
                     border: 2px solid $game-wraper;
                 }
             }
@@ -69,20 +75,20 @@
                 .match {
                     height: 15px;
                     border-radius: 50%;
-                    background-color: #f9f5d7;
+                    background-color: $main-bg;
                     border: 2px solid $game-wraper;
                     &.grey {
-                        background-color: #928374;
+                        background-color: $main-fg;
                     }
                     &.black {
-                        background-color: #3c3836;
+                        background-color: $black;
                     }
                 }
             }
         }
-        @each $color-name, $value in map-get($color-map, 'colors') {
+        @each $color-name in (orange yellow green cyan blue magenta pink grey red black) {
             .#{$color-name} {
-                background-color: $value;
+                background-color: map-get($color-map, $color-name);
             }
         }
     }
@@ -92,7 +98,7 @@
             opacity: .85;
         }
         .menu-content {
-            background-color: #f9f5d7;
+            background-color: $main-bg;
         }
     }
 
@@ -106,13 +112,13 @@
     }
 
     .timer {
-        background-color: #98971a;
+        background-color: $timer-bg;
         padding: 4px 5px;
-        color: #f9f5d7;
+        color: $main-bg;
         border-radius: 3px;
         .badge {
-            background-color: #f9f5d7;
-            color: #928374;
+            background-color: $main-bg;
+            color: $main-fg;
             padding: 0 5px;
             border-radius: 3px;
         }

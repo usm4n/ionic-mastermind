@@ -9,6 +9,7 @@ import { ColorChooserComponent } from './components/color-chooser.component';
 import { GameRowComponent } from './components/game-row.component';
 import { GameTimerComponent } from './components/game-timer.component';
 import { ColorSlotDirective } from './components/directives/color-slot.directive';
+import { OverlayMessageComponent } from './components/overlay-message.component';
 
 import { GameSettingsService } from './services/game-settings.service';
 import { SequenceGeneratorService } from './services/sequence-generator.service';
@@ -25,6 +26,7 @@ import { SettingsMenu } from './scenes/modals/settings-menu';
         ColorChooserComponent,
         GameRowComponent,
         ColorSlotDirective,
+        OverlayMessageComponent,
         MenuModal,
         MainMenu,
         SettingsMenu

@@ -18,15 +18,17 @@ export class MainScene implements OnInit {
     currentColor: string | null;
     reset: boolean = false;
 
-    constructor(public navCtrl: NavController,
+    constructor(
+        public navCtrl: NavController,
         public settingsService: GameSettingsService,
         public sequenceGenerator: SequenceGeneratorService,
-        public modalContrller: ModalController) {
+        public modalContrller: ModalController
+    ) {
         this.rows = this.fillRows();
     }
 
     ngOnInit() {
-        this.modalContrller.create(MenuModal).present();
+        // this.modalContrller.create(MenuModal).present();
 
         this.settingsService
             .theme$
@@ -52,6 +54,8 @@ export class MainScene implements OnInit {
 
     update(event) {
         if (event === false) this.activeRow--;
+        
+
     }
 
     fillRows(rows = 10): Array<number> {

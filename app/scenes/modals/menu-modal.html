@@ -1,4 +1,23 @@
-<ion-tabs tabsPlacement="top">
-    <ion-tab [root]="mainMenu" tabTitle="Menu"></ion-tab>
-    <ion-tab [root]="settingsMenu" tabTitle="Settings"></ion-tab>
-</ion-tabs>
+<ion-content padding scroll="false" class="menu-content">
+    <ion-grid [style.margin-top.px]="50">
+        <ion-row>
+            <ion-col col-4 offset-2>
+                <ion-row padding>
+                    <ion-col class="control">
+                        <a>Play</a>
+                    </ion-col>
+                </ion-row>
+                <ion-row padding>
+                    <ion-col class="control">
+                        <a>Settings</a>
+                    </ion-col>
+                </ion-row>
+                <ion-row padding>
+                    <ion-col class="control">
+                        <a>Exit</a>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+     </ion-grid>
+</ion-content>

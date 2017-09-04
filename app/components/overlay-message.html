@@ -1,0 +1,19 @@
+<ion-row>
+    <div class="overlay-message"></div>
+    <ion-col text-center col-4 offset-1 [style.z-index]="30">
+        <ion-row class="hidden-sequence" >
+            <ion-col *ngFor="let color of ['red', 'blue', 'green', 'yellow']">
+                <div class="slot" [ngClass]="gameOver === true ? color : ''"></div>
+            </ion-col>
+        </ion-row>
+    </ion-col>
+    <ion-col offset-2 no-padding>
+        <ion-row [style.margin-top.px]="15">
+            <ion-col class="button-reset">
+                <div class="slot" (click)="resetGame()"><ion-icon name="refresh"></ion-icon></div>
+            </ion-col>
+        </ion-row>
+    </ion-col>
+</ion-row>
+
+

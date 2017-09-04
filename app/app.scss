@@ -14,3 +14,132 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+$themes: ( 
+    default: (
+      (orange , #fe8019),
+      (yellow , #d79921),
+      (green  , #98971a),
+      (cyan   , #2aa198),
+      (blue   , #268bd2),
+      (magenta, #6c71c4),
+      (pink   , #d33682),
+      (red    , #cc241d),
+      (grey   , #928374),
+      (black  , #3c3836),
+      (background, #f9f5d7),
+      (game-wraper, #bdae93)
+    ),
+    alternate: (
+    //
+    )
+);
+
+main-scene {
+    .main-bg {
+        background-color: #f9f5d7;
+    }
+    .button-reset {
+        border-radius: 5px;
+        background-color: #ebdbb2;
+        font-size: 1.8em;
+        color: #928374;
+        text-align: center;
+    }
+    .game-wraper {
+        padding: 0;
+        background-color: #bdae93;
+        border: 5px solid #bdae93;
+        border-radius: 3px;
+    }
+    .row-inactive .col, .result-col.inactive {
+        background-color: #928374;
+        border: 2px solid #bdae93;
+        border-radius: 5px;
+        padding: 3px;
+    }
+    .row-active .col:not(.result-col), .result-col.active {
+        background-color: #fbf1c7;
+        border: 2px solid #bdae93;
+        border-radius: 5px;
+        padding: 3px;
+        transition: background-color .1s ease-out;
+    }
+    .color-chooser .col, .hidden-sequence .col {
+        background-color: #ebdbb2;
+    }
+    .hidden-sequence .slot {
+        background-color: #bdae93;
+        color: #928374;
+        font-weight: bold;
+        line-height: 30px;
+    }
+    .result-col {
+        &.inactive {
+            .match {
+                height: 15px;
+                border-radius: 50%;
+                background-color: #928374;
+                border: 2px solid #bdae93;
+            }
+        }
+        &.active {
+            .match {
+                height: 15px;
+                border-radius: 50%;
+                background-color: #F9f5d7;
+                border: 2px solid #bdae93;
+                &.grey {
+                    background-color: #928374;
+                }
+                &.black {
+                    background-color: #3c3836;
+                }
+            }
+        }
+    }
+    @each $color-name, $value in map-get($themes, default) {
+        .#{$color-name} {
+            background-color: $value;
+        }
+    }
+}
+ion-modal {
+    &.show-page {
+        opacity: .85;
+    }
+    .menu-content {
+        background-color: #f9f5d7;
+    }
+}
+
+.game-control {
+    display: block;
+    background-color: #928374;
+    border-radius: 3px;
+    color: #f9f5d7;
+    padding: 4px 5px;
+    box-shadow: 0 3px 0 #ebdbb2, 0 -1px #f9f5d7 inset;
+}
+
+.timer {
+    background-color: #98971a;
+    padding: 4px 5px;
+    color: #f9f5d7;
+    border-radius: 3px;
+    .badge {
+        background-color: #f9f5d7;
+        color: #928374;
+        padding: 0 5px;
+        border-radius: 3px;
+    }
+}
+
+.overlay-message {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(50, 48, 47, 0.85);
+    z-index: 20;
+    top: 0;
+    left: 0;
+}

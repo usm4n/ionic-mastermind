@@ -7,8 +7,10 @@ import { SequenceGeneratorService } from './sequence-generator.service';
 export class SequenceMatcherService {
     private currentSequence: string[];
 
-    constructor(private sequenceGenerator: SequenceGeneratorService,
-        private settingsService: GameSettingsService) {
+    constructor(
+        private sequenceGenerator: SequenceGeneratorService,
+        private settingsService: GameSettingsService
+    ) {
         this.setUp();
     }
 

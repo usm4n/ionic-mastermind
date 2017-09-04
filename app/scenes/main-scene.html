@@ -1,25 +1,22 @@
-<ion-content padding scrol="false" class="{{theme}}-bg">
+<ion-content padding scrol="false" class="bg">
     <div class="control-bar">
         <ul class="controls">
-            <!--<li class="control">-->
-                <!--<a>Reset</a>-->
-            <!--</li>-->
-            <li class="control">
-                <a (click)="showMenu()">Menu</a>
+            <li>
+                <a class="game-control" (click)="showMenu()">Menu</a>
+            </li>
+            <li class="timer">
+                <ion-icon name="clock"></ion-icon> <span class="badge"><game-timer></game-timer></span>
             </li>
         </ul>
-        <div class="best-score">
-            <ion-icon name="clock"></ion-icon> <span class="badge"><game-timer></game-timer></span>
-        </div>
     </div>
     <ion-grid>
         <ion-row>
             <ion-col text-center col-4 offset-1>
                 <ion-row class="hidden-sequence">
-                    <ion-col><div class="slot"></div></ion-col>
-                    <ion-col><div class="slot"></div></ion-col>
-                    <ion-col><div class="slot"></div></ion-col>
-                    <ion-col><div class="slot"></div></ion-col>
+                    <ion-col><div class="slot">?</div></ion-col>
+                    <ion-col><div class="slot">?</div></ion-col>
+                    <ion-col><div class="slot">?</div></ion-col>
+                    <ion-col><div class="slot">?</div></ion-col>
                 </ion-row>
             </ion-col>
             <ion-col offset-2 no-padding>

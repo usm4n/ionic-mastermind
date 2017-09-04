@@ -12,11 +12,11 @@ export class SettingsMenu implements OnInit {
     settingsForm: FormGroup;
     dissmissEvent: Subject<boolean> = new Subject<boolean>();
 
-    constructor(public viewCtrl: ViewController,
+    constructor(
+        public viewCtrl: ViewController,
         private settingsService: GameSettingsService,
-        private formBuilder: FormBuilder) {
-            //
-        }
+        private formBuilder: FormBuilder
+    ) {}
 
     ngOnInit() {
         this.settingsForm = this.createForm();

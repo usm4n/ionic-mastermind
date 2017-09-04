@@ -1,170 +1,57 @@
 main-scene {
-    .default-bg {
-        background-color: #f9f5d7;
-    }
-    .solarized-bg {
-        background-color: #073642;
-    }
     .offset-1 {
         margin-left: 12.5%;
     }
     .control-bar {
-        overflow: hidden;
-        .controls {
-            float: right;
-            text-align: center;
+        ul.controls {
+            display: flex;
+            justify-content: flex-end;
             list-style: none;
             margin: 0;
             padding-left: 0;
-            .control {
-                display: inline-block;
+            li {
+                order: 2;
                 padding: 0 5px 5px;
-                a {
-                    display: inline-block;
-                    background-color: #928374;
-                    border-radius: 3px;
-                    color: #f9f5d7;
-                    padding: 4px 5px;
-                    box-shadow: 0 3px 0 #ebdbb2, 0 -1px #f9f5d7 inset;
+                &.timer {
+                    order: 1;
+                    align-self: flex-start;
+                     margin-right: auto;
+                     padding: 4px 5px;
                 }
             }
-        }
-        .best-score {
-            float:left;
-            background-color: #98971a;
-            padding: 4px 5px;
-            color: #f9f5d7;
-            border-radius: 3px;
-            .badge {
-                background-color: #f9f5d7;
-                color: #928374;
-                padding: 0 5px;
-                border-radius: 3px;
-            }
-        }
-        &:after {
-            content: "";
-            display: block;
-            clear: both;
         }
     }
     .row-height {
         height: 40px;
     }
-    .button-reset {
-        border-radius: 5px;
-        background-color: #ebdbb2;
-        font-size: 1.8em;
-        color: #928374;
-        text-align: center;
-    }
-    .game-wraper {
-        padding: 0;
-        background-color: #bdae93;
-        border: 5px solid #bdae93;
-        border-radius: 3px;
-    }
-    .row-inactive .col, .result-col.inactive {
-        background-color: #928374;
-        border: 2px solid #bdae93;
-        border-radius: 5px;
-        padding: 3px;
-    }
-    .row-active .col:not(.result-col), .result-col.active {
-        background-color: #fbf1c7;
-        border: 2px solid #bdae93;
-        border-radius: 5px;
-        padding: 3px;
-        transition: background-color .1s ease-out;
-    }
-    .color-chooser {
+   .color-chooser {
         margin-top: 10px;
+        .row:first-child .col {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        .row:last-child .col {
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
     }
     .hidden-sequence {
         margin-top: 10px;
         margin-bottom: 20px;
         border-radius: 5px;
-    }
-    .hidden-sequence .col:first-child {
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
-    }
-    .hidden-sequence .col:last-child {
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-    }
-    .color-chooser .col, .hidden-sequence .col {
-        background-color: #ebdbb2;
-    }
-    .hidden-sequence .slot {
-        background-color: #bdae93;
-    }
-    .hidden-sequence .slot::after {
-        content: '?';
-        color: #928374;
-        font-weight: bold;
-        line-height: 30px;
-    }
-    .color-chooser .row:first-child .col {
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-    }
-    .color-chooser .row:last-child .col {
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
+        .col:first-child {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        .col:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
     }
     .slot {
         height: 30px;
         border-radius: 50%;
         transition: background-color .1s ease-out;
-    }
-    .result-col.inactive .match {
-        height: 15px;
-        border-radius: 50%;
-        background-color: #928374;
-        border: 2px solid #bdae93;
-    }
-    .result-col.active .match {
-        height: 15px;
-        border-radius: 50%;
-        background-color: #F9f5d7;
-        border: 2px solid #bdae93;
-        &.grey {
-            background-color: #928374;
-        }
-        &.black {
-            background-color: #3c3836;
-        }
-    }
-    .orange {
-        background-color: #fe8019;
-    }
-    .yellow {
-        background-color: #d79921;
-    }
-    .green {
-        background-color: #98971a;
-    }
-    .cyan {
-        background-color: #2aa198;
-    }
-    .blue {
-        background-color: #268bd2;
-    }
-    .magenta {
-        background-color: #6c71c4;
-    }
-    .pink {
-        background-color: #d33682;
-    }
-    .red {
-        background-color: #cc241d;
-    }
-    .grey {
-        background-color: #928374;
-    }
-    .black {
-        background-color: #3c3836;
     }
  }
 

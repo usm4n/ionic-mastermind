@@ -31,35 +31,42 @@ $colors: (
   dark:       #222,
 );
 
+$theme-defaults: (
+    orange: #fe8019,
+    yellow: #d79921,
+    green:  #98971a,
+    cyan:   #2aa198,
+    blue:   #268bd2,
+    magenta: #6c71c4,
+    pink:    #d33682,
+    red:    #cc241d,
+    grey:   #928374,
+    black: #3c3836,
+    match: #3c3836,
+    exist: #928374,
+    light: #fbf1c7,
+);
+
 $themes: (
-    default: (
-        orange: #fe8019,
-        yellow: #d79921,
-        green:  #98971a,
-        cyan:   #2aa198,
-        blue:   #268bd2,
-        magenta: #6c71c4,
-        pink:    #d33682,
-        red:    #cc241d,
-        grey:   #928374,
-        black: #3c3836,
-        light: #fbf1c7,
+    default: map-merge($theme-defaults, (
+        //design colors here
         background: #f9f5d7,
         foreground: #928374,
         control-bg: #ebdbb2,
         game-wraper: #bdae93
-    ),
-    alternate: (
-    //
-    )
+    )),
+    alternate: map-merge($theme-defaults, (
+        //design colors here
+        background: #32302f,
+        foreground: #d5c4a1,
+        control-bg: #504945,
+        game-wraper: #928374
+    ))
 );
-
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-
-
 
 
 // App Material Design Variables

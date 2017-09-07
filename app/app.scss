@@ -14,10 +14,15 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
 @mixin theme($color-map) {
     $black: map-get($color-map, black);
     $timer-bg: map-get($color-map, green);
     $light-bg: map-get($color-map, light);
+    $no-match: $light-bg;
+    $match: map-get($color-map, match);
+    $exist: map-get($color-map, exist);
+
     $main-bg: map-get($color-map, 'background');
     $main-fg: map-get($color-map, 'foreground');
     $control-bg: map-get($color-map, 'control-bg');
@@ -75,13 +80,13 @@
                 .match {
                     height: 15px;
                     border-radius: 50%;
-                    background-color: $main-bg;
+                    background-color: $no-match;
                     border: 2px solid $game-wraper;
                     &.grey {
-                        background-color: $main-fg;
+                        background-color: $exist;
                     }
                     &.black {
-                        background-color: $black;
+                        background-color: $match;
                     }
                 }
             }

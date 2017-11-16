@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { SequenceGeneratorService } from '../services/sequence-generator.service';
 import { GameTimerComponent } from '../components/game-timer.component';
-import { MenuModal } from './modals/menu-modal';
+import { MainMenu } from './menu/main';
 import { GameSettingsService } from '../services/game-settings.service';
 
 @Component({
@@ -28,7 +28,9 @@ export class MainScene implements OnInit {
     }
 
     ngOnInit() {
-        // this.modalContrller.create(MenuModal).present();
+        const menu = this.modalContrller.create(MainMenu);
+        menu.onDidDismiss(command => this[command]());
+        menu.present();
 
         this.settingsService
             .theme$
@@ -44,7 +46,11 @@ export class MainScene implements OnInit {
     }
 
     showMenu() {
-        this.modalContrller.create(MenuModal).present();
+        this.modalContrller.create(MainMenu).present();
+    }
+
+    play() {
+        this.resetGame();
     }
 
     resetGame() {

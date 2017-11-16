@@ -102,6 +102,17 @@
         .menu-content {
             background-color: rgba($main-bg, .85);
         }
+        .item, .item-md, .item-block {
+            color: $main-fg;
+            background-color: $main-bg;
+            &.item-divider, &.item-divider-md {
+                border-bottom: none;
+                background-color: darken($main-bg,5);
+            }
+            .item-inner {
+                border-bottom: none;
+            }
+        }
     }
 
     .game-control {

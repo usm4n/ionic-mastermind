@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { GameSettingsService } from '../../services/game-settings.service';
 
 @Component({
-    templateUrl: 'settings-menu.html'
+    templateUrl: 'settings.html'
 })
 export class SettingsMenu implements OnInit {
     settingsForm: FormGroup;

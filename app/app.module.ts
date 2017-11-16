@@ -14,9 +14,8 @@ import { OverlayMessageComponent } from './components/overlay-message.component'
 import { GameSettingsService } from './services/game-settings.service';
 import { SequenceGeneratorService } from './services/sequence-generator.service';
 import { SequenceMatcherService } from './services/sequence-matcher.service';
-import { MenuModal } from './scenes/modals/menu-modal';
-import { MainMenu } from './scenes/modals/main-menu';
-import { SettingsMenu } from './scenes/modals/settings-menu';
+import { MainMenu } from './scenes/menu/main';
+import { SettingsMenu } from './scenes/menu/settings';
 
 @NgModule({
     declarations: [
@@ -27,7 +26,6 @@ import { SettingsMenu } from './scenes/modals/settings-menu';
         GameRowComponent,
         ColorSlotDirective,
         OverlayMessageComponent,
-        MenuModal,
         MainMenu,
         SettingsMenu
     ],
@@ -40,7 +38,6 @@ import { SettingsMenu } from './scenes/modals/settings-menu';
     entryComponents: [
         MyApp,
         MainScene,
-        MenuModal,
         MainMenu,
         SettingsMenu
     ],

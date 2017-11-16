@@ -1,3 +1,4 @@
+import tap from 'lodash/tap';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { SequenceGeneratorService } from '../services/sequence-generator.service';
@@ -28,9 +29,9 @@ export class MainScene implements OnInit {
     }
 
     ngOnInit() {
-        const menu = this.modalContrller.create(MainMenu);
-        menu.onDidDismiss(command => this[command]());
-        menu.present();
+        tap(this.modalContrller.create(MainMenu), modal =>
+            modal.onDidDismiss(command => this[command]())
+        ).present();
 
         this.settingsService
             .theme$

@@ -99,21 +99,26 @@
     }
 
     ion-modal {
-        &.show-page {
-            opacity: .85;
-        }
         .menu-content {
-            background-color: $main-bg;
+            background-color: rgba($main-bg, .85);
         }
     }
 
     .game-control {
         display: block;
-        background-color: #928374;
+        text-align: center;
+        background-color: $control-bg;
         border-radius: 3px;
         color: #f9f5d7;
-        padding: 4px 5px;
-        box-shadow: 0 3px 0 #ebdbb2, 0 -1px #f9f5d7 inset;
+        padding: 5px 5px;
+        box-shadow: 0 6px 0 darken($control-bg, 15);
+        &:active {
+            transform: translateY(6px);
+            box-shadow: none;
+        }
+        &:hover {
+            opacity: 1;
+        }
     }
 
     .timer {

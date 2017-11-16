@@ -44,10 +44,10 @@ export class GameSettingsService {
 
     setup() {
         this.readStorage()
-                .catch(() => Observable.empty())
-                .defaultIfEmpty(CONFIG)
-                .do((settings) => console.log(settings))
-                .subscribe(this._settings);
+            .catch(() => Observable.empty())
+            .defaultIfEmpty(CONFIG)
+            .do((settings) => console.log(settings))
+            .subscribe(this._settings);
     }
 
     readStorage() {
@@ -101,4 +101,3 @@ export class GameSettingsService {
             .pluck('duplicates');
     }
 }
-

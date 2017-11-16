@@ -29,9 +29,9 @@ export class GameTimerComponent implements OnInit {
         return Observable.interval(100);
     }
 
-    createTimer() {
-        return this.timerCtrl
-            .switchMap(state => !state ? Observable.never() : this.tick$);
+    createTimer(): Observable<any> {
+        return this.timerCtrl.asObservable()
+            .switchMap<boolean, any>((state: boolean) => !state ? Observable.never() : this.tick$);
     }
 
     play() {
@@ -64,7 +64,7 @@ export class GameTimerComponent implements OnInit {
         ++ this.timer.counter;
     }
 
-    getFormatedTimer() {
+    getFormatedTimer(): string {
         return (this.timer.min < 10 ? '0' : '') + this.timer.min + ':'
             + (this.timer.sec < 10 ? '0' : '') + this.timer.sec + ':0'
             + this.timer.micSec;

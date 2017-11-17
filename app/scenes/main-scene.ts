@@ -56,6 +56,10 @@ export class MainScene implements OnInit {
         this.resetGame();
     }
 
+    resume() {
+        this.timer.play();
+    }
+
     resetGame() {
         this.setUp();
         this.reset = true;

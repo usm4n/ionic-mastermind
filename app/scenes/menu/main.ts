@@ -1,20 +1,31 @@
+import {
+    NavParams,
+    ViewController,
+    ModalController
+} from 'ionic-angular';
 import { Component } from '@angular/core';
 import { SettingsMenu } from './settings';
-import { ViewController } from 'ionic-angular';
-import { ModalController } from 'ionic-angular';
 
 @Component({
     templateUrl: 'main.html'
 })
 export class MainMenu {
+    public running: boolean = false;
 
     constructor(
+        public navParams: NavParams,
         public viewCtrl: ViewController,
         public modalContrller: ModalController
-    ) {}
+    ) {
+        this.running = navParams.get('running');
+    }
 
     play() {
         this.viewCtrl.dismiss('play');
+    }
+
+    resume() {
+        this.viewCtrl.dismiss('resume');
     }
 
     settings() {

@@ -18,6 +18,7 @@ export class MainScene implements OnInit {
     activeRow: number = 10;
     currentColor: string | null;
     reset: boolean = false;
+    running: boolean = false;
 
     constructor(
         public navCtrl: NavController,
@@ -29,10 +30,7 @@ export class MainScene implements OnInit {
     }
 
     ngOnInit() {
-        tap(this.modalContrller.create(MainMenu), modal =>
-            modal.onDidDismiss(command => this[command]())
-        ).present();
-
+        this.showMenu();
         this.settingsService
             .theme$
             .subscribe((theme: string) => {this.theme = theme});
@@ -47,7 +45,11 @@ export class MainScene implements OnInit {
     }
 
     showMenu() {
-        this.modalContrller.create(MainMenu).present();
+        this.running && this.timer.pause();
+
+        tap(this.modalContrller.create(MainMenu, {running: this.running}), modal =>
+            modal.onDidDismiss(command => this[command]())
+        ).present();
     }
 
     play() {
@@ -57,11 +59,11 @@ export class MainScene implements OnInit {
     resetGame() {
         this.setUp();
         this.reset = true;
+        this.running = true;
     }
 
     update(event) {
         if (event === false) this.activeRow--;
-        
 
     }
 

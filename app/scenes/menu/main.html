@@ -3,8 +3,11 @@
         <ion-row>
             <ion-col col-4 offset-2>
                 <ion-row padding>
-                    <ion-col>
+                    <ion-col *ngIf="!running">
                         <a class="game-control" (click)="play()">Play</a>
+                    </ion-col>
+                    <ion-col *ngIf="running">
+                        <a class="game-control" (click)="resume()">Resume</a>
                     </ion-col>
                 </ion-row>
                 <ion-row padding>

@@ -38,14 +38,11 @@ export class GameSettingsService {
     constructor(private storage: Storage) {
         this._settings = new BehaviorSubject(<Settings>{});
         this.settings$ = this._settings.asObservable();
-
         this.setup();
     }
 
     setup() {
         this.readStorage()
-            .catch(() => Observable.empty())
-            .defaultIfEmpty(CONFIG)
             .do((settings) => console.log(settings))
             .subscribe(this._settings);
     }
@@ -55,7 +52,7 @@ export class GameSettingsService {
             this.storage.get('__settings')
                 .then((settings) => {
                     settings === null
-                        ? observer.error(new Error('null value'))
+                        ? observer.next(CONFIG)
                         : observer.next(settings);
                 });
         });
@@ -66,7 +63,6 @@ export class GameSettingsService {
 
         this.storage.set('__settings', settings)
         .then((value) => {
-            console.log(value);
             this._settings.next(value);
         });
     }

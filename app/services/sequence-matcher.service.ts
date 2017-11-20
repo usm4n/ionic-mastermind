@@ -25,7 +25,8 @@ export class SequenceMatcherService {
 
             return 'notexist';
         });
-
+        console.log(exists);
+        console.log(lookup);
         let others = sequence.map((value, index) => {
             let lookupIndex = lookup.indexOf(value);
 
@@ -36,6 +37,7 @@ export class SequenceMatcherService {
 
             return 'notexist';
         });
+        console.log(others);
 
         exists.sort();
         others.sort();

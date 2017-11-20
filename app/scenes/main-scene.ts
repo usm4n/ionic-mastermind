@@ -1,10 +1,17 @@
+import {
+    OnInit,
+    ViewChild,
+    Component,
+} from '@angular/core';
+import {
+    Events,
+    NavController,
+    ModalController
+} from 'ionic-angular';
 import tap from 'lodash/tap';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
-import { SequenceGeneratorService } from '../services/sequence-generator.service';
-import { GameTimerComponent } from '../components/game-timer.component';
 import { MainMenu } from './menu/main';
-import { GameSettingsService } from '../services/game-settings.service';
+import { GameTimerComponent } from '../components/game-timer.component';
+import { SequenceGeneratorService } from '../services/sequence-generator.service';
 
 @Component({
     selector: 'main-scene',
@@ -21,27 +28,26 @@ export class MainScene implements OnInit {
     running: boolean = false;
 
     constructor(
+        public events: Events,
         public navCtrl: NavController,
-        public settingsService: GameSettingsService,
         public sequenceGenerator: SequenceGeneratorService,
         public modalContrller: ModalController
     ) {
         this.rows = this.fillRows();
+        this.events.subscribe('game:quit', _ => {
+            this.resetGame();
+            this.timer.reset();
+        });
     }
 
     ngOnInit() {
         this.showMenu();
-        this.settingsService
-            .theme$
-            .subscribe((theme: string) => {this.theme = theme});
-        this.setUp();
     }
 
     setUp() {
         this.sequenceGenerator.generateSequence();
         this.currentColor = null;
         this.activeRow = 10;
-        this.timer.play();
     }
 
     showMenu() {
@@ -54,6 +60,7 @@ export class MainScene implements OnInit {
 
     play() {
         this.resetGame();
+        this.timer.play();
     }
 
     resume() {

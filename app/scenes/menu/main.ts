@@ -1,4 +1,5 @@
 import {
+    Events,
     NavParams,
     ViewController,
     ModalController
@@ -13,6 +14,7 @@ export class MainMenu {
     public running: boolean = false;
 
     constructor(
+        public events: Events,
         public navParams: NavParams,
         public viewCtrl: ViewController,
         public modalContrller: ModalController
@@ -26,6 +28,11 @@ export class MainMenu {
 
     resume() {
         this.viewCtrl.dismiss('resume');
+    }
+
+    quitGame() {
+        this.running = false;
+        this.events.publish('game:quit');
     }
 
     settings() {

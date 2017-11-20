@@ -10,12 +10,17 @@
                         <a class="game-control" (click)="resume()">Resume</a>
                     </ion-col>
                 </ion-row>
-                <ion-row padding>
+                <ion-row *ngIf="running" padding>
+                    <ion-col>
+                        <a class="game-control" (click)="quitGame()">Quit Game</a>
+                    </ion-col>
+                </ion-row>
+                 <ion-row padding>
                     <ion-col >
                         <a class="game-control" (click)="settings()">Settings</a>
                     </ion-col>
                 </ion-row>
-                <ion-row padding>
+               <ion-row padding>
                     <ion-col>
                         <a class="game-control">Exit</a>
                     </ion-col>

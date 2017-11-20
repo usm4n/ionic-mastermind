@@ -52,6 +52,10 @@ $colors: map-merge($colors, $theme-defaults);
 $themes: (
     default: map-merge($theme-defaults, (
         //design colors here
+        button-bg: #ebdbb2,
+        button-fg: #928374,
+        button-shadow: #928374,
+
         background : #f9f5d7,
         foreground : #928374,
         control-bg : #ebdbb2,
@@ -59,6 +63,10 @@ $themes: (
     )),
     alternate: map-merge($theme-defaults, (
         //design colors here
+        button-bg: #504945,
+        button-fg: #f9f5d7,
+        button-shadow: darken(#504945, 15),
+
         background : #32302f,
         foreground : #d5c4a1,
         control-bg : #504945,

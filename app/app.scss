@@ -19,9 +19,14 @@
     $black: map-get($color-map, black);
     $timer-bg: map-get($color-map, green);
     $light-bg: map-get($color-map, light);
+
     $no-match: $light-bg;
     $match: map-get($color-map, match);
     $exist: map-get($color-map, exist);
+
+    $button-fg: map-get($color-map, 'button-fg');
+    $button-bg: map-get($color-map, 'button-bg');
+    $button-shadow: map-get($color-map, 'button-shadow');
 
     $main-bg: map-get($color-map, 'background');
     $main-fg: map-get($color-map, 'foreground');
@@ -117,12 +122,13 @@
 
     .game-control {
         display: block;
+        font-weight: bold;
         text-align: center;
-        background-color: $control-bg;
+        background-color: $button-bg;
         border-radius: 3px;
-        color: #f9f5d7;
+        color: $button-fg;
         padding: 5px 5px;
-        box-shadow: 0 6px 0 darken($control-bg, 15);
+        box-shadow: 0 6px 0 $button-shadow;
         &:active {
             transform: translateY(6px);
             box-shadow: none;

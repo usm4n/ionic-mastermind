@@ -17,17 +17,18 @@ export class SequenceMatcherService {
     matchSequence(sequence: string[]): string[] {
         let lookup = [...this.currentSequence];
 
-        let exists = sequence.map((value, index) => {
+        let partialMatch = sequence.map((value, index) => {
             if (lookup[index] === value) {
                 lookup[index] = 'visited';
                 return 'exists';
             }
 
-            return 'notexist';
+            return value;
         });
-        console.log(exists);
-        console.log(lookup);
-        let others = sequence.map((value, index) => {
+
+        let fullMatch = partialMatch.map((value, index) => {
+            if (value === 'exists') return value;
+
             let lookupIndex = lookup.indexOf(value);
 
             if (includes(lookup, value)) {
@@ -37,15 +38,10 @@ export class SequenceMatcherService {
 
             return 'notexist';
         });
-        console.log(others);
 
-        exists.sort();
-        others.sort();
+        fullMatch.sort();
 
-        let index = exists.lastIndexOf('exists') + 1;
-        let otherIndex = others.length - index;
-
-        return [...exists.slice(0, index), ...others.slice(0, otherIndex)];
+        return fullMatch;
     }
 
     setUp() {

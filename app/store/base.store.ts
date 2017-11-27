@@ -12,7 +12,7 @@ import 'rxjs/add/operator/pluck';
 import { Settings } from '../models/settings';
 
 @Injectable()
-export abstract class AbstractSore {
+export abstract class BaseStore<T extends StoreData> {
     private _settings: BehaviorSubject<Settings>;
 
     settings$: Observable<Settings>;

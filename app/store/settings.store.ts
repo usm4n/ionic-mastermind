@@ -1,3 +1,4 @@
+import { BaseStore } from './base.store';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -30,7 +31,7 @@ const CONFIG: Settings = {
 };
 
 @Injectable()
-export class GameSettingsService {
+export class SettingsStore extends BaseStore<Settings> {
     private _settings: BehaviorSubject<Settings>;
 
     settings$: Observable<Settings>;

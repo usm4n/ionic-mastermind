@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { App, Platform } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 import { GameSettingsService } from './services/game-settings.service';
 
 import { MainScene } from './scenes/main-scene'
@@ -15,13 +16,15 @@ export class MyApp {
     constructor(
         appService: App,
         platform: Platform,
-        settingsService: GameSettingsService
+        settingsService: GameSettingsService,
+        splashScreen: SplashScreen,
+        statusBar: StatusBar
     ) {
         platform.ready().then(() => {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
-            StatusBar.styleDefault();
-            Splashscreen.hide();
+            statusBar.styleDefault();
+            splashScreen.hide();
             settingsService.theme$.subscribe((theme: string) => {
                 if(theme) {
                     appService.setElementClass(this.currentClass, false);

@@ -1,7 +1,12 @@
 import { NgModule, ErrorHandler } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
+
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { MyApp } from './app.component';
 import { MainScene } from './scenes/main-scene';
@@ -30,6 +35,8 @@ import { SettingsMenu } from './scenes/menu/settings';
         SettingsMenu
     ],
     imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
         IonicModule.forRoot(MyApp),
         IonicStorageModule.forRoot(),
         ReactiveFormsModule,
@@ -42,6 +49,8 @@ import { SettingsMenu } from './scenes/menu/settings';
         SettingsMenu
     ],
     providers: [
+        StatusBar,
+        SplashScreen,
         GameSettingsService,
         SequenceMatcherService,
         SequenceGeneratorService,

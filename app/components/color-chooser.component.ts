@@ -3,12 +3,15 @@ import {
     Input,
     Output,
     EventEmitter,
+} from '@angular/core';
+
+import {
     trigger,
     state,
     style,
     animate,
     transition
-} from '@angular/core';
+} from '@angular/animations';
 
 import { Observable } from 'rxjs/Observable';
 

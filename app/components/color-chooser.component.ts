@@ -15,7 +15,7 @@ import {
 
 import { Observable } from 'rxjs/Observable';
 
-import { GameSettingsService } from '../services/game-settings.service'
+import { SettingsStore } from '../store/settings.store';
 
 @Component({
     selector: 'color-chooser',
@@ -38,8 +38,8 @@ export class ColorChooserComponent {
     @Output() selectedColorChange = new EventEmitter<string>();
 
     colorClasses$: Observable<string[]>;
-    constructor(private settings: GameSettingsService) {
-        this.colorClasses$ = this.settings.colors$;
+    constructor(private settingsStore: SettingsStore) {
+        this.colorClasses$ = this.settingsStore.colors$;
     }
 
     updateColor(color) {

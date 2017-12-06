@@ -3,7 +3,7 @@ import { Subject } from 'rxjs/Subject';
 import { ViewController } from 'ionic-angular';
 import { Settings } from '../../models/settings';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { GameSettingsService } from '../../services/game-settings.service';
+import { SettingsStore } from '../../store/settings.store';
 
 @Component({
     templateUrl: 'settings.html'
@@ -14,15 +14,15 @@ export class SettingsMenu implements OnInit {
 
     constructor(
         public viewCtrl: ViewController,
-        private settingsService: GameSettingsService,
+        private settingsStore: SettingsStore,
         private formBuilder: FormBuilder
     ) {}
 
     ngOnInit() {
         this.settingsForm = this.createForm();
 
-        this.settingsService
-            .settings$
+        this.settingsStore
+            .store$
             .takeUntil(this.dissmissEvent)
             .subscribe((settings: Settings) => this.settingsForm.patchValue(settings, {emitEvent: false}));
 
@@ -31,7 +31,7 @@ export class SettingsMenu implements OnInit {
             .debounceTime(500)
             .distinctUntilChanged(this.comparator())
             .takeUntil(this.dissmissEvent)
-            .subscribe((value) => this.settingsService.set(value));
+            .subscribe((value) => this.settingsStore.set(value));
     }
 
     createForm(): FormGroup {

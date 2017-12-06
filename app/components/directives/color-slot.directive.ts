@@ -1,4 +1,5 @@
-import { Directive,
+import {
+    Directive,
     HostBinding,
     HostListener,
     Input,

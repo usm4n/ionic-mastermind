@@ -1,6 +1,6 @@
 import { Subject, BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { GameSettingsService } from './game-settings.service';
+import { SettingsStore } from '../store/settings.store';
 
 import sampleSize from 'lodash/sampleSize'
 
@@ -11,11 +11,11 @@ export class SequenceGeneratorService {
     private _stop: Subject<boolean> = new Subject<boolean>();
     private _sequence: BehaviorSubject<string[]> = new BehaviorSubject(<string[]> []);
 
-    constructor(public settingsService: GameSettingsService) {
+    constructor(public settingsStore: SettingsStore) {
         this._generator
             .withLatestFrom(
-                this.settingsService.colors$,
-                this.settingsService.duplicates$,
+                this.settingsStore.colors$,
+                this.settingsStore.duplicates$,
                 (_, colors, duplicates) => {
                     return !duplicates
                         ? sampleSize<string>(colors, 4)

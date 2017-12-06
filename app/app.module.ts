@@ -16,7 +16,8 @@ import { GameTimerComponent } from './components/game-timer.component';
 import { ColorSlotDirective } from './components/directives/color-slot.directive';
 import { OverlayMessageComponent } from './components/overlay-message.component';
 
-import { GameSettingsService } from './services/game-settings.service';
+import { SettingsStore } from './store/settings.store.ts';
+
 import { SequenceGeneratorService } from './services/sequence-generator.service';
 import { SequenceMatcherService } from './services/sequence-matcher.service';
 import { MainMenu } from './scenes/menu/main';
@@ -51,7 +52,7 @@ import { SettingsMenu } from './scenes/menu/settings';
     providers: [
         StatusBar,
         SplashScreen,
-        GameSettingsService,
+        SettingsStore,
         SequenceMatcherService,
         SequenceGeneratorService,
         {provide: ErrorHandler, useClass: IonicErrorHandler},

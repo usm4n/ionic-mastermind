@@ -1,6 +1,5 @@
 import includes from 'lodash/includes';
 import { Injectable } from '@angular/core';
-import { GameSettingsService } from './game-settings.service';
 import { SequenceGeneratorService } from './sequence-generator.service';
 
 @Injectable()
@@ -9,7 +8,6 @@ export class SequenceMatcherService {
 
     constructor(
         private sequenceGenerator: SequenceGeneratorService,
-        private settingsService: GameSettingsService
     ) {
         this.setUp();
     }

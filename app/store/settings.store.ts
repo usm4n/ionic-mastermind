@@ -32,44 +32,12 @@ const CONFIG: Settings = {
 
 @Injectable()
 export class SettingsStore extends BaseStore<Settings> {
-    private _settings: BehaviorSubject<Settings>;
-
-    settings$: Observable<Settings>;
-
-    constructor(private storage: Storage) {
-        this._settings = new BehaviorSubject(<Settings>{});
-        this.settings$ = this._settings.asObservable();
-        this.setup();
-    }
-
-    setup() {
-        this.readStorage()
-            .do((settings) => console.log(settings))
-            .subscribe(this._settings);
-    }
-
-    readStorage() {
-        return Observable.create((observer) => {
-            this.storage.get('__settings')
-                .then((settings) => {
-                    settings === null
-                        ? observer.next(CONFIG)
-                        : observer.next(settings);
-                });
-        });
-    }
-
-    set(settings: {difficulty: string, theme: string, duplicates: boolean}): void {
-        settings = Object.assign({}, this._settings.value, settings);
-
-        this.storage.set('__settings', settings)
-        .then((value) => {
-            this._settings.next(value);
-        });
+    constructor(storage: Storage) {
+        super(storage, CONFIG, '__settings');
     }
 
     get colors$() {
-        return this.settings$
+        return this.store$
             .pluck('colors')
             .withLatestFrom(this.difficulty$, (colors: string[], difficulty) => {
                 switch (difficulty) {
@@ -84,17 +52,17 @@ export class SettingsStore extends BaseStore<Settings> {
     }
 
     get difficulty$() {
-        return this.settings$
+        return this.store$
             .pluck('difficulty');
     }
 
     get theme$() {
-        return this.settings$
+        return this.store$
             .pluck('theme');
     }
 
     get duplicates$() {
-        return this.settings$
+        return this.store$
             .pluck('duplicates');
     }
 }

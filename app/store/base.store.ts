@@ -9,43 +9,51 @@ import 'rxjs/add/operator/defaultIfEmpty';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/pluck';
 
+import { Stats } from '../models/stats';
 import { Settings } from '../models/settings';
+
+export type StoreData = Settings | Stats;
 
 @Injectable()
 export abstract class BaseStore<T extends StoreData> {
-    private _settings: BehaviorSubject<Settings>;
+    private _store: BehaviorSubject<T>;
 
-    settings$: Observable<Settings>;
+    public store$: Observable<T>;
 
-    constructor(private storage: Storage) {
-        this._settings = new BehaviorSubject(<Settings>{});
-        this.settings$ = this._settings.asObservable();
+    constructor(
+        private storage: Storage,
+        private defaultData: T,
+        private key: string
+
+    ) {
+        this._store = new BehaviorSubject(<T>{});
+        this.store$ = this._store.asObservable();
         this.setup();
     }
 
     setup() {
         this.readStorage()
-            .do((settings) => console.log(settings))
-            .subscribe(this._settings);
+            .do((data: T) => console.log(data))
+            .subscribe(this._store);
     }
 
     readStorage() {
         return Observable.create((observer) => {
-            this.storage.get('__settings')
-                .then((settings) => {
-                    settings === null
-                        ? observer.next(CONFIG)
-                        : observer.next(settings);
+            this.storage.get(this.key)
+                .then((data: T) => {
+                    data === null
+                        ? observer.next(this.defaultData)
+                        : observer.next(data);
                 });
         });
     }
 
-    set(settings: {difficulty: string, theme: string, duplicates: boolean}): void {
-        settings = Object.assign({}, this._settings.value, settings);
+    set(data: Partial<T>): void {
+        data = Object.assign({}, this._store.value, data);
 
-        this.storage.set('__settings', settings)
-        .then((value) => {
-            this._settings.next(value);
+        this.storage.set(this.key, data)
+        .then((value: T) => {
+            this._store.next(value);
         });
     }
 }

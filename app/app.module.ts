@@ -16,7 +16,7 @@ import { GameTimerComponent } from './components/game-timer.component';
 import { ColorSlotDirective } from './components/directives/color-slot.directive';
 import { OverlayMessageComponent } from './components/overlay-message.component';
 
-import { SettingsStore } from './store/settings.store.ts';
+import { SettingsStore } from './store/settings.store';
 
 import { SequenceGeneratorService } from './services/sequence-generator.service';
 import { SequenceMatcherService } from './services/sequence-matcher.service';

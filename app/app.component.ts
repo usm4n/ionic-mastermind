@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { App, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
+import { SettingsStore } from './store/settings.store';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { GameSettingsService } from './services/game-settings.service';
 
 import { MainScene } from './scenes/main-scene'
 
@@ -16,7 +16,7 @@ export class MyApp {
     constructor(
         appService: App,
         platform: Platform,
-        settingsService: GameSettingsService,
+        settingsStore: SettingsStore,
         splashScreen: SplashScreen,
         statusBar: StatusBar
     ) {
@@ -25,7 +25,7 @@ export class MyApp {
             // Here you can do any higher level native things you might need.
             statusBar.styleDefault();
             splashScreen.hide();
-            settingsService.theme$.subscribe((theme: string) => {
+            settingsStore.theme$.subscribe((theme: string) => {
                 if(theme) {
                     appService.setElementClass(this.currentClass, false);
                     appService.setElementClass(theme, true);

@@ -3,6 +3,9 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { ISubscription } from 'rxjs/Subscription';
 
+import 'rxjs/add/observable/never';
+import 'rxjs/add/observable/interval';
+
 @Component({
     selector: 'game-timer',
     template: `{{getFormatedTimer()}}`

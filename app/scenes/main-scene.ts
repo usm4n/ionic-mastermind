@@ -10,6 +10,8 @@ import {
 } from 'ionic-angular';
 import tap from 'lodash/tap';
 import { MainMenu } from './menu/main';
+import { StatsStore } from '../store/stats.store';
+import { SettingsStore } from '../store/settings.store';
 import { GameTimerComponent } from '../components/game-timer.component';
 import { SequenceGeneratorService } from '../services/sequence-generator.service';
 

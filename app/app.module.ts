@@ -16,6 +16,7 @@ import { GameTimerComponent } from './components/game-timer.component';
 import { ColorSlotDirective } from './components/directives/color-slot.directive';
 import { OverlayMessageComponent } from './components/overlay-message.component';
 
+import { StatsStore } from './store/stats.store';
 import { SettingsStore } from './store/settings.store';
 
 import { SequenceGeneratorService } from './services/sequence-generator.service';
@@ -51,6 +52,7 @@ import { SettingsMenu } from './scenes/menu/settings';
     ],
     providers: [
         StatusBar,
+        StatsStore,
         SplashScreen,
         SettingsStore,
         SequenceMatcherService,

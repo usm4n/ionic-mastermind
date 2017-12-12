@@ -9,12 +9,11 @@ import 'rxjs/add/operator/defaultIfEmpty';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/pluck';
 
-import { Stats } from '../models/stats';
+import { GameStats } from '../models/stats';
 import { Settings } from '../models/settings';
 
-export type StoreData = Settings | Stats;
+export type StoreData = Settings | GameStats;
 
-@Injectable()
 export abstract class BaseStore<T extends StoreData> {
     private _store: BehaviorSubject<T>;
 

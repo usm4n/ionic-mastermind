@@ -5,6 +5,9 @@ import { Settings } from '../../models/settings';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SettingsStore } from '../../store/settings.store';
 
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+
 @Component({
     templateUrl: 'settings.html'
 })

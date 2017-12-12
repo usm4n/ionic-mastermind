@@ -1,6 +1,10 @@
-import { Subject, BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject'
+
 import { Injectable } from '@angular/core';
 import { SettingsStore } from '../store/settings.store';
+
+import 'rxjs/add/operator/withLatestFrom';
 
 import sampleSize from 'lodash/sampleSize'
 

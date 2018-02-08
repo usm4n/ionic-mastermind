@@ -13,7 +13,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 })
 export class SettingsMenu implements OnInit {
     settingsForm: FormGroup;
-    dissmissEvent: Subject<boolean> = new Subject<boolean>();
+    dissmissEvent$: Subject<boolean> = new Subject<boolean>();
 
     constructor(
         public viewCtrl: ViewController,
@@ -26,14 +26,14 @@ export class SettingsMenu implements OnInit {
 
         this.settingsStore
             .store$
-            .takeUntil(this.dissmissEvent)
+            .takeUntil(this.dissmissEvent$)
             .subscribe((settings: Settings) => this.settingsForm.patchValue(settings, {emitEvent: false}));
 
         this.settingsForm
             .valueChanges
             .debounceTime(500)
             .distinctUntilChanged(this.comparator())
-            .takeUntil(this.dissmissEvent)
+            .takeUntil(this.dissmissEvent$)
             .subscribe((value) => this.settingsStore.set(value));
     }
 
@@ -49,7 +49,7 @@ export class SettingsMenu implements OnInit {
     dismiss() {
         this.viewCtrl
             .dismiss()
-            .then(() => this.dissmissEvent.next(true));
+            .then(() => this.dissmissEvent$.next(true));
     }
 
     comparator(): (prev: any, next: any) => boolean {

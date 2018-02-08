@@ -10,9 +10,16 @@ import 'rxjs/add/operator/pluck';
 
 import { Stats, GameStats } from '../models/stats';
 
+const defaultTime = {
+    min: 0,
+    sec: 0,
+    micSec: 0,
+    counter: 0
+};
+
 const defaultStats: Stats = {
     numberOfGames: 0,
-    bestTime: {}
+    bestTime: defaultTime
 }
 
 const STATS: GameStats = {

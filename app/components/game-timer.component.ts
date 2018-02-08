@@ -73,6 +73,10 @@ export class GameTimerComponent implements OnInit {
             + this.timer.micSec;
     }
 
+    value(): any {
+        return this.timer;
+    }
+
     ngOnDestroy() {
         this.timerSubscription.unsubscribe();
     }

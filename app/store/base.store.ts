@@ -48,6 +48,8 @@ export abstract class BaseStore<T extends StoreData> {
     }
 
     set(data: Partial<T>): void {
+        console.log(data);
+        console.log(this._store.value);
         data = Object.assign({}, this._store.value, data);
 
         this.storage.set(this.key, data)

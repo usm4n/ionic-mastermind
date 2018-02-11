@@ -12,7 +12,7 @@ import {
 import tap from 'lodash/tap';
 import { MainMenu } from './menu/main';
 import { Subject } from 'rxjs/Subject';
-import { GameStats } from '../models/stats';
+import { Stats, GameStats } from '../models/stats';
 import { StatsStore } from '../store/stats.store';
 import { SettingsStore } from '../store/settings.store';
 import { combineLatest } from 'rxjs/observable/combineLatest';
@@ -30,8 +30,9 @@ export class MainScene implements OnInit, OnDestroy {
 
     readonly lastRow: number = 1;
 
+    gameOver: boolean = false;
     rows: number[];
-    stats: GameStats;
+    stats: Stats;
     difficulty: string;
     activeRow: number = 10;
     reset: boolean = false;
@@ -65,7 +66,7 @@ export class MainScene implements OnInit, OnDestroy {
         .do(([stats, difficulty]: [GameStats, string]) => this.difficulty = difficulty)
         .map(([stats, difficulty]: [GameStats, string]) => stats[difficulty])
         .takeUntil(this.sceneDestroyed$)
-        .subscribe(stats => this.stats = stats);
+        .subscribe((stats: Stats) => this.stats = stats);
     }
 
     ngOnDestroy() {
@@ -89,6 +90,10 @@ export class MainScene implements OnInit, OnDestroy {
     play() {
         this.resetGame();
         this.timer.play();
+        this.stats.numberOfGames++;
+        this.statsStore.set({
+            [this.difficulty]: this.stats
+        });
     }
 
     resume() {
@@ -107,15 +112,18 @@ export class MainScene implements OnInit, OnDestroy {
         } else if (this.activeRow > this.lastRow) {
             this.activeRow--;
         } else {
-            this.gameOver();
+            this.gameLost();
         }
     }
 
     gameWon() {
-
+        this.gameOver = true;
+        console.log('won');
+        console.log(this.stats);
+        console.log(this.timer.value());
     }
 
-    gameOver() {
+    gameLost() {
 
     }
 

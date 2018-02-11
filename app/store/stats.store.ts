@@ -23,9 +23,9 @@ const defaultStats: Stats = {
 }
 
 const STATS: GameStats = {
-    easy: defaultStats,
-    hard: defaultStats,
-    medium: defaultStats
+    easy: {...defaultStats},
+    hard: {...defaultStats},
+    medium: {...defaultStats}
 };
 
 @Injectable()

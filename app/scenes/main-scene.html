@@ -10,24 +10,8 @@
         </ul>
     </div>
     <ion-grid>
-        <ion-row>
-            <ion-col text-center col-4 offset-1>
-                <ion-row class="hidden-sequence">
-                    <ion-col><div class="slot">?</div></ion-col>
-                    <ion-col><div class="slot">?</div></ion-col>
-                    <ion-col><div class="slot">?</div></ion-col>
-                    <ion-col><div class="slot">?</div></ion-col>
-                </ion-row>
-            </ion-col>
-            <ion-col offset-2 no-padding>
-                <ion-row [style.margin-top.px]="15">
-                    <ion-col class="button-reset">
-                        <div class="slot" (click)="resetGame()"><ion-icon name="refresh"></ion-icon></div>
-                    </ion-col>
-                </ion-row>
-            </ion-col>
-        </ion-row>
-        <ion-row>
+        <overlay-message (reset)="resetGame()" [gameOver]="gameOver" [hiddenSequence]="sequenceGenerator.sequence$ | async"></overlay-message>
+             <ion-row>
             <ion-col col-6 class="game-wraper">
                 <game-row [currentColor]="currentColor" [activeRow]="activeRow" (rowMatched)="update($event)" *ngFor="let row of rows" [currentRow]="row" [(resetRow)]="reset"></game-row>
             </ion-col>

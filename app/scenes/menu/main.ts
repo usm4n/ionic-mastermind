@@ -64,6 +64,6 @@ export class MainMenu implements OnInit {
     }
 
     settingsMenu() {
-        this.modalContrller.create(SettingsMenu).present();
+        this.modalContrller.create(SettingsMenu, {running: this.running}).present();
     }
 }

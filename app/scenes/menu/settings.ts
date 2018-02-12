@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import { ViewController } from 'ionic-angular';
+import { ViewController, NavParams } from 'ionic-angular';
 import { Settings } from '../../models/settings';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SettingsStore } from '../../store/settings.store';
@@ -12,14 +12,18 @@ import 'rxjs/add/operator/distinctUntilChanged';
     templateUrl: 'settings.html'
 })
 export class SettingsMenu implements OnInit {
+    running: boolean = false;
     settingsForm: FormGroup;
     dissmissEvent$: Subject<boolean> = new Subject<boolean>();
 
     constructor(
+        public navParams: NavParams,
         public viewCtrl: ViewController,
         private settingsStore: SettingsStore,
         private formBuilder: FormBuilder
-    ) {}
+    ) {
+        this.running = navParams.get('running');
+    }
 
     ngOnInit() {
         this.settingsForm = this.createForm();
@@ -40,9 +44,9 @@ export class SettingsMenu implements OnInit {
     createForm(): FormGroup {
         return this.formBuilder
             .group({
-                difficulty: 'hard',
+                difficulty: {value: 'hard', disabled: this.running},
                 theme: 'default',
-                duplicates: true
+                duplicates: {value: true, disabled: this.running},
             });
     }
 

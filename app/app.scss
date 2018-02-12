@@ -154,11 +154,33 @@
     .overlay-message {
         position: fixed;
         width: 100%;
-        height: 100%;
-        background: rgba(50, 48, 47, 0.85);
+        height: 50%;
+        background-color: $main-bg;
+        // background: rgba(50, 48, 47, 0.85);
         z-index: 20;
-        top: 0;
+        top: 30%;
         left: 0;
+        .result {
+            width: 70%;
+            margin: 35px auto;
+            padding: 25px;
+            text-align: center;
+            .won{
+                color: map-get($color-map, green);
+            }
+            .new-record {
+                color: map-get($color-map, orange);
+            }
+            .time {
+                color: map-get($color-map, pink);
+            }
+            .game-over {
+                color: map-get($color-map, red);
+            }
+            .difficulty {
+                color: map-get($color-map, yellow);
+            }
+        }
     }
 }
 

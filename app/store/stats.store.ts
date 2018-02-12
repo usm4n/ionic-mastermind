@@ -14,7 +14,7 @@ const defaultTime = {
     min: 0,
     sec: 0,
     micSec: 0,
-    counter: 0
+    counter: 1e20
 };
 
 const defaultStats: Stats = {

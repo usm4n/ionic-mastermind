@@ -2,8 +2,6 @@ import {
     Component,
     OnInit,
     Input,
-    Output,
-    EventEmitter,
 } from '@angular/core';
 
 @Component({
@@ -11,14 +9,11 @@ import {
     templateUrl: 'overlay-message.html'
 })
 export class OverlayMessageComponent implements OnInit {
-    @Input() hiddenSequence: string[];
     @Input() gameOver: boolean = false;
-    @Output() reset = new EventEmitter<boolean>();
+    @Input() newRecord: boolean = false;
+    @Input() playerWon: boolean = false;
 
-    constructor() {}
-
-    resetGame() {
-        this.reset.emit(true);
+    constructor() {
     }
 
     ngOnInit() {}

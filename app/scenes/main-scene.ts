@@ -31,11 +31,13 @@ export class MainScene implements OnInit, OnDestroy {
     readonly lastRow: number = 1;
 
     gameOver: boolean = false;
+    playerWon: boolean = false;
+    newRecord: boolean = false;
+
     rows: number[];
     stats: Stats;
     difficulty: string;
     activeRow: number = 10;
-    reset: boolean = false;
     running: boolean = false;
     currentColor: string | null;
 
@@ -90,6 +92,7 @@ export class MainScene implements OnInit, OnDestroy {
     play() {
         this.resetGame();
         this.timer.play();
+        this.running = true;
         this.stats.numberOfGames++;
         this.statsStore.set({
             [this.difficulty]: this.stats
@@ -102,8 +105,9 @@ export class MainScene implements OnInit, OnDestroy {
 
     resetGame() {
         this.setUp();
-        this.reset = true;
-        this.running = true;
+        this.gameOver = false;
+        this.playerWon = false;
+        this.newRecord = false;
     }
 
     update(event) {
@@ -117,14 +121,27 @@ export class MainScene implements OnInit, OnDestroy {
     }
 
     gameWon() {
+        this.timer.pause();
+        this.running = false;
         this.gameOver = true;
-        console.log('won');
-        console.log(this.stats);
-        console.log(this.timer.value());
+        this.playerWon = true;
+
+        let time = this.timer.value();
+
+        if (time.counter < this.stats.bestTime.counter) {
+            this.newRecord = true;
+            this.stats.bestTime = time;
+            this.statsStore.set({
+                [this.difficulty]: this.stats
+            });
+        }
     }
 
     gameLost() {
-
+        this.timer.pause();
+        this.running = false;
+        this.gameOver = true;
+        this.playerWon = false;
     }
 
     fillRows(rows = 10): Array<number> {

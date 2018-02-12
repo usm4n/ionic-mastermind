@@ -66,4 +66,10 @@ export class MainMenu implements OnInit {
     settingsMenu() {
         this.modalContrller.create(SettingsMenu, {running: this.running}).present();
     }
+
+    formatTime(time: any): string {
+        return (time.min < 10 ? '0' : '') + time.min + ':'
+            + (time.sec < 10 ? '0' : '') + time.sec + ':0'
+            + time.micSec;
+    }
 }

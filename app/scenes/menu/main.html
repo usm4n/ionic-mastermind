@@ -17,12 +17,32 @@
                 </ion-row>
                  <ion-row padding>
                     <ion-col >
-                        <a class="game-control" (click)="settings()">Settings</a>
+                        <a class="game-control" (click)="settingsMenu()">Settings</a>
                     </ion-col>
                 </ion-row>
                <ion-row padding>
                     <ion-col>
                         <a class="game-control">Exit</a>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+        <ion-row class="stats">
+            <ion-col>
+                <ion-row>
+                    <ion-col offset-1>
+                        <span>Best score: {{stats?.bestTime.min}}:{{stats?.bestTime.sec}}:{{stats?.bestTime.micSec}}</span>
+                    </ion-col>
+                    <ion-col>
+                        <span>Difficulty: {{settings.difficulty}}</span>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col offset-1>
+                        <span>Games Played: {{stats?.numberOfGames}}</span>
+                    </ion-col>
+                    <ion-col>
+                        <span>Theme: {{settings.theme}}</span>
                     </ion-col>
                 </ion-row>
             </ion-col>

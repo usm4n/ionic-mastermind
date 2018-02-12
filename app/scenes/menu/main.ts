@@ -7,16 +7,18 @@ import {
 import { Subject } from 'rxjs/Subject';
 import { Component, OnInit } from '@angular/core';
 import { SettingsMenu } from './settings';
-import { GameStats } from '../../models/stats';
+import { Stats, GameStats } from '../../models/stats';
 import { StatsStore } from '../../store/stats.store';
 import { SettingsStore } from '../../store/settings.store';
 import { combineLatest } from 'rxjs/observable/combineLatest';
+import { Settings } from '../../models/settings';
 
 @Component({
     templateUrl: 'main.html'
 })
 export class MainMenu implements OnInit {
-    public stats: GameStats;
+    public stats: Stats;
+    public settings: Settings;
     public running: boolean = false;
 
     menuDestroyed$: Subject<boolean> = new Subject<boolean>();
@@ -35,11 +37,13 @@ export class MainMenu implements OnInit {
     ngOnInit() {
         combineLatest(
             this.statsStore.store$,
-            this.settingsStore.difficulty$
+            this.settingsStore.store$
         )
-        .map(([stats, difficulty]: [GameStats, string]) => stats[difficulty])
         .takeUntil(this.menuDestroyed$)
-        .subscribe(stats => this.stats = stats);
+        .subscribe(([stats, settings]) => {
+            this.stats = stats[settings.difficulty];
+            this.settings = settings;
+        });
     }
 
     play() {
@@ -59,7 +63,7 @@ export class MainMenu implements OnInit {
         this.events.publish('game:quit');
     }
 
-    settings() {
+    settingsMenu() {
         this.modalContrller.create(SettingsMenu).present();
     }
 }

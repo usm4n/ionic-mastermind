@@ -19,7 +19,7 @@
             <ion-col text-center col-4 offset-1>
                 <ion-row class="hidden-sequence" >
                     <ion-col *ngFor="let color of sequenceGenerator.sequence$ | async">
-                        <div class="slot" [ngClass]="true === true ? color : 'default'">
+                        <div class="slot" [ngClass]="gameOver === true ? color : 'default'">
                             {{!gameOver ? '?': ''}}
                         </div>
                     </ion-col>

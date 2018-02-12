@@ -36,6 +36,7 @@ export class MainScene implements OnInit, OnDestroy {
 
     rows: number[];
     stats: Stats;
+    reset: boolean = false;
     difficulty: string;
     activeRow: number = 10;
     running: boolean = false;
@@ -105,6 +106,8 @@ export class MainScene implements OnInit, OnDestroy {
 
     resetGame() {
         this.setUp();
+        // chains down to rows for reset event.
+        this.reset = true;
         this.gameOver = false;
         this.playerWon = false;
         this.newRecord = false;

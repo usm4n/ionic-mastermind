@@ -3,10 +3,23 @@ import {
     OnInit,
     Input,
 } from '@angular/core';
+import {
+    trigger,
+    state,
+    style,
+    animate,
+    transition
+} from '@angular/animations';
 
 @Component({
     selector: 'overlay-message',
-    templateUrl: 'overlay-message.html'
+    templateUrl: 'overlay-message.html',
+    animations: [
+        trigger('slideUpDown', [
+            transition(':enter', [style({transform: 'translateY(100%)'}), animate('.5s ease-out')]),
+            transition(':leave', [animate('.2s ease-in', style({transform: 'translateY(100%)'}))])
+        ])
+    ]
 })
 export class OverlayMessageComponent implements OnInit {
     @Input() gameOver: boolean = false;

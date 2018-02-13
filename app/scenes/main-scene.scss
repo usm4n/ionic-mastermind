@@ -23,7 +23,13 @@ main-scene {
     }
     .row-height {
         height: 40px;
-    }
+        @media (max-width: 768px) and (min-width: 410px) {
+            height: 44.19px;
+        }
+        // @media (min-width: 768px) {
+        //     height: 91.17px;
+        // }
+}
    .color-chooser {
         margin-top: 10px;
         .row:first-child .col {
@@ -49,9 +55,15 @@ main-scene {
         }
     }
     .slot {
-        height: 30px;
+        height: 29.75px;
         border-radius: 50%;
         transition: background-color .1s ease-out;
+        @media (max-width: 768px) and (min-width: 410px){
+             height: 33.75px;
+        }
+        // @media (min-width: 768px) {
+        //     height: 78.5px;
+        // }
     }
  }
 

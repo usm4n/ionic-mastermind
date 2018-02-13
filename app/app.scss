@@ -71,6 +71,9 @@
             color: $main-fg;
             font-weight: bold;
             line-height: 30px;
+            @media (max-width: 768px) and (min-width: 410px) {
+                line-height: 35px;
+            }
         }
         .result-col {
             &.inactive {
@@ -79,6 +82,9 @@
                     border-radius: 50%;
                     background-color: $main-fg;
                     border: 2px solid $game-wraper;
+                    @media (max-width: 768px) and (min-width: 410px){
+                        height: 17.09px;
+                    }
                 }
             }
             &.active {
@@ -92,6 +98,9 @@
                     }
                     &.black {
                         background-color: $match;
+                    }
+                    @media (max-width: 768px) and (min-width: 410px) {
+                        height: 17.09px;
                     }
                 }
             }
@@ -184,6 +193,7 @@
     .stats {
         background-color: $button-bg;
         color: $main-fg;
+        font-weight: bold;
         position: absolute;
         height: 10%;
         width: 100%;

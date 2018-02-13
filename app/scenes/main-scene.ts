@@ -7,7 +7,7 @@ import {
 import {
     Events,
     NavController,
-    ModalController
+    ModalController,
 } from 'ionic-angular';
 import tap from 'lodash/tap';
 import { MainMenu } from './menu/main';
@@ -102,6 +102,9 @@ export class MainScene implements OnInit, OnDestroy {
 
     resume() {
         this.timer.play();
+    }
+
+    replay() {
     }
 
     resetGame() {

@@ -9,7 +9,7 @@
             </li>
         </ul>
     </div>
-    <ion-grid>
+    <ion-grid fixed>
         <overlay-message
             [gameOver]="gameOver"
             [playerWon]="playerWon"
@@ -28,7 +28,7 @@
             <ion-col offset-2 no-padding>
                 <ion-row [style.margin-top.px]="15">
                     <ion-col class="button-reset">
-                        <div class="slot" (click)="resetGame()"><ion-icon name="refresh"></ion-icon></div>
+                        <div class="slot" (click)="replay()"><ion-icon name="refresh"></ion-icon></div>
                     </ion-col>
                 </ion-row>
             </ion-col>

@@ -18,6 +18,7 @@ import { SettingsStore } from '../store/settings.store';
 import { combineLatest } from 'rxjs/observable/combineLatest';
 import { GameTimerComponent } from '../components/game-timer.component';
 import { SequenceGeneratorService } from '../services/sequence-generator.service';
+import { AlertComponent } from '../components/alert.component';
 
 import 'rxjs/add/operator/do';
 
@@ -26,6 +27,7 @@ import 'rxjs/add/operator/do';
     templateUrl: 'main-scene.html'
 })
 export class MainScene implements OnInit, OnDestroy {
+    @ViewChild(AlertComponent) alert;
     @ViewChild(GameTimerComponent) timer;
 
     readonly lastRow: number = 1;
@@ -105,6 +107,11 @@ export class MainScene implements OnInit, OnDestroy {
     }
 
     replay() {
+        this.alert.show()
+            .then(
+                () => console.log('ok'),
+                () => console.log('cancel')
+            );
     }
 
     resetGame() {

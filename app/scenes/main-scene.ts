@@ -7,7 +7,7 @@ import {
 import {
     Events,
     NavController,
-    ModalController,
+    ModalController
 } from 'ionic-angular';
 import tap from 'lodash/tap';
 import { MainMenu } from './menu/main';
@@ -32,6 +32,7 @@ export class MainScene implements OnInit, OnDestroy {
 
     readonly lastRow: number = 1;
 
+    currentTime: any;
     gameOver: boolean = false;
     playerWon: boolean = false;
     newRecord: boolean = false;
@@ -86,6 +87,7 @@ export class MainScene implements OnInit, OnDestroy {
 
     showMenu() {
         this.running && this.timer.pause();
+        this.gameOver && (this.gameOver = false);
 
         tap(this.modalContrller.create(MainMenu, {running: this.running}), modal =>
             modal.onDidDismiss(command => this[command]())
@@ -144,11 +146,11 @@ export class MainScene implements OnInit, OnDestroy {
         this.gameOver = true;
         this.playerWon = true;
 
-        let time = this.timer.value();
+        this.currentTime = this.timer.value();
 
-        if (time.counter < this.stats.bestTime.counter) {
+        if (this.currentTime.counter < this.stats.bestTime.counter) {
             this.newRecord = true;
-            this.stats.bestTime = time;
+            this.stats.bestTime = this.currentTime;
             this.statsStore.set({
                 [this.difficulty]: this.stats
             });
@@ -160,6 +162,7 @@ export class MainScene implements OnInit, OnDestroy {
         this.running = false;
         this.gameOver = true;
         this.playerWon = false;
+        this.currentTime = this.timer.value();
     }
 
     fillRows(rows = 10): Array<number> {

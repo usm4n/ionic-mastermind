@@ -1,5 +1,6 @@
 import {
     Events,
+    Platform,
     NavParams,
     ViewController,
     ModalController
@@ -25,6 +26,7 @@ export class MainMenu implements OnInit {
 
     constructor(
         public events: Events,
+        public platform: Platform,
         public navParams: NavParams,
         public statsStore: StatsStore,
         public viewCtrl: ViewController,
@@ -61,6 +63,10 @@ export class MainMenu implements OnInit {
     quitGame() {
         this.running = false;
         this.events.publish('game:quit');
+    }
+
+    exit() {
+        this.platform.exitApp();
     }
 
     settingsMenu() {

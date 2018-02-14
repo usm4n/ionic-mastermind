@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import { ViewController, NavParams } from 'ionic-angular';
+import { App, ViewController, NavParams, Platform } from 'ionic-angular';
 import { Settings } from '../../models/settings';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SettingsStore } from '../../store/settings.store';
@@ -16,7 +16,11 @@ export class SettingsMenu implements OnInit {
     settingsForm: FormGroup;
     dissmissEvent$: Subject<boolean> = new Subject<boolean>();
 
+    removeBackButtonAction: Function;
+
     constructor(
+        public app: App,
+        public platform: Platform,
         public navParams: NavParams,
         public viewCtrl: ViewController,
         private settingsStore: SettingsStore,
@@ -61,6 +65,18 @@ export class SettingsMenu implements OnInit {
             return prev.theme === next.theme &&
                 prev.difficulty === next.difficulty &&
                 prev.duplicates === next.duplicates;
+        }
+    }
+
+    ionViewDidEnter() {
+        this.removeBackButtonAction = this.platform.registerBackButtonAction(() => {
+            this.app.goBack();
+        }, 100);
+    }
+
+    ionViewWillLeave() {
+        if (this.removeBackButtonAction) {
+            this.removeBackButtonAction();
         }
     }
 }

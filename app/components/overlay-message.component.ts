@@ -25,9 +25,16 @@ export class OverlayMessageComponent implements OnInit {
     @Input() gameOver: boolean = false;
     @Input() newRecord: boolean = false;
     @Input() playerWon: boolean = false;
+    @Input() difficulty: string;
+    @Input() time: any;
 
     constructor() {
     }
 
     ngOnInit() {}
-}
+
+    formattedTime(time: any): string {
+        return (this.time.min < 10 ? '0' : '') + this.time.min + ':'
+            + (this.time.sec < 10 ? '0' : '') + this.time.sec + ':0'
+            + this.time.micSec;
+    }}

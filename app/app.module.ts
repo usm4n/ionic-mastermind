@@ -7,6 +7,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AndroidFullScreen } from '@ionic-native/android-full-screen';
 
 import { MyApp } from './app.component';
 import { MainScene } from './scenes/main-scene';
@@ -56,6 +57,7 @@ import { AlertComponent } from './components/alert.component';
         StatusBar,
         StatsStore,
         SplashScreen,
+        AndroidFullScreen,
         SettingsStore,
         SequenceMatcherService,
         SequenceGeneratorService,

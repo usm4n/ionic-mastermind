@@ -1,0 +1,18 @@
+<div *ngIf="showAlert" [@slideRight] class="alert">
+    <div class="dialog">
+        <ion-row>
+            <ion-col>
+                <p>{{message}}</p>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col (click)="dismiss(false)">
+                <ion-icon name="close"></ion-icon>
+            </ion-col>
+            <ion-col (click)="dismiss(true)">
+                <ion-icon name="checkmark"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </div>
+</div>
+

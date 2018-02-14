@@ -94,6 +94,7 @@ export class MainScene implements OnInit, OnDestroy {
 
     play() {
         this.resetGame();
+        this.timer.reset();
         this.timer.play();
         this.running = true;
         this.stats.numberOfGames++;
@@ -107,11 +108,15 @@ export class MainScene implements OnInit, OnDestroy {
     }
 
     replay() {
-        this.alert.show()
-            .then(
-                () => console.log('ok'),
-                () => console.log('cancel')
-            );
+        if(this.running) {
+            this.timer.pause();
+
+            this.alert.show()
+                .then(
+                    () => this.play(),
+                    () => this.timer.play()
+                );
+        } else this.play();
     }
 
     resetGame() {

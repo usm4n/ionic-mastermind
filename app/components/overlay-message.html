@@ -4,7 +4,7 @@
         <h1 *ngIf="!playerWon" class="won" [style.line-height.em]="2">Game Over!</h1>
         <h2 *ngIf="newRecord" class="new-record"[style.line-height.em]="2">New Record</h2>
         <h3 class="time" [style.line-height.em]="2">Time: {{formattedTime()}}</h3>
-        <h4 class="difficulty" [style.line-height.em]="2">Difficulty: Hard</h4>
+        <h4 class="difficulty" [style.line-height.em]="2">Difficulty: {{difficulty}}</h4>
     </div>
 </div>
 

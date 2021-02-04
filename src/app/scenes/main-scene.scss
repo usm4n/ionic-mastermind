@@ -26,6 +26,9 @@ main-scene {
         @media (max-width: 768px) and (min-width: 410px) {
             height: 44.19px;
         }
+        @media (max-width: 359px) {
+            height: 31.06px;
+        }
         // @media (min-width: 768px) {
         //     height: 91.17px;
         // }
@@ -60,6 +63,9 @@ main-scene {
         transition: background-color .1s ease-out;
         @media (max-width: 768px) and (min-width: 410px){
              height: 33.75px;
+        }
+        @media (max-width: 359px) {
+            height: 21.25px;
         }
         // @media (min-width: 768px) {
         //     height: 78.5px;

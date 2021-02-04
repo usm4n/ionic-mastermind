@@ -8,6 +8,8 @@ import { AndroidFullScreen } from '@ionic-native/android-full-screen';
 import { MainScene } from './scenes/main-scene'
 import { SettingsMenu } from './scenes/menu/settings';
 
+import 'rxjs/add/operator/startWith';
+
 @Component({
     templateUrl: 'app.html'
 })
@@ -28,7 +30,7 @@ export class MyApp {
             // Here you can do any higher level native things you might need.
             statusBar.styleDefault();
             splashScreen.hide();
-            settingsStore.theme$.subscribe((theme: string) => {
+            settingsStore.theme$.startWith('default').subscribe((theme: string) => {
                 if(theme) {
                     this.app.setElementClass(this.currentClass, false);
                     this.app.setElementClass(theme, true);

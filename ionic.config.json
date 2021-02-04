@@ -1,0 +1,7 @@
+{
+  "name": "CodeBreakers",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

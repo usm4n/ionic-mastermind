@@ -89,8 +89,10 @@ export class MainScene implements OnInit, OnDestroy {
         this.running && this.timer.pause();
         this.gameOver && (this.gameOver = false);
 
-        tap(this.modalContrller.create(MainMenu, {running: this.running}, {enableBackdropDismiss: false}), modal =>
-            modal.onDidDismiss(command => this[command]())
+        tap(this.modalContrller.create(MainMenu,
+            {running: this.running},
+            {enableBackdropDismiss: false}),
+            modal => modal.onDidDismiss(command => this[command]())
         ).present();
     }
 

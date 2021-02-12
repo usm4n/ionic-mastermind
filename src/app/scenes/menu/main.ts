@@ -8,7 +8,7 @@ import {
 import { Subject } from 'rxjs/Subject';
 import { Component, OnInit } from '@angular/core';
 import { SettingsMenu } from './settings';
-import { Stats, GameStats } from '../../models/stats';
+import { Stats } from '../../models/stats';
 import { StatsStore } from '../../store/stats.store';
 import { SettingsStore } from '../../store/settings.store';
 import { combineLatest } from 'rxjs/observable/combineLatest';

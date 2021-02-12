@@ -6,7 +6,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AndroidFullScreen } from '@ionic-native/android-full-screen';
 
 import { MainScene } from './scenes/main-scene'
-import { SettingsMenu } from './scenes/menu/settings';
 
 import 'rxjs/add/operator/startWith';
 

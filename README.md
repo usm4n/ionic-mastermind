@@ -20,7 +20,7 @@
     <a href="https://github.com/usm4n/ionic-mastermind"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href = "https: //github.com/usm4n/ionic-mastermind">View Demo</a>
+    <a href = "https://usm4n.github.io/mastermind/">View Demo</a>
     ·
     <a href="https://github.com/usm4n/ionic-mastermind/issues">Report Bug</a>
     ·
@@ -165,4 +165,4 @@ Project Link: [https://github.com/usm4n/ionic-mastermind](https://github.com/usm
 [issues-shield]: https://img.shields.io/github/issues/usm4n/ionic-mastermind.svg?style=for-the-badge
 [issues-url]: https://github.com/usm4n/ionic-mastermind/issues
 [license-shield]: https://img.shields.io/github/license/usm4n/ionic-mastermind.svg?style=for-the-badge
-[license-url]: https://github.com/usm4n/ionic-mastermind/blob/master/LICENSE.txt
+[license-url]: https://github.com/usm4n/ionic-mastermind/blob/main/LICENSE.txt

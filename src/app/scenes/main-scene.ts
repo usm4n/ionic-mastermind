@@ -56,7 +56,7 @@ export class MainScene implements OnInit, OnDestroy {
         public sequenceGenerator: SequenceGeneratorService,
     ) {
         this.rows = this.fillRows();
-        this.events.subscribe('game:quit', _ => {
+        this.events.subscribe('game:quit', (_: any) => {
             this.resetGame();
             this.timer.reset();
         });
@@ -92,7 +92,7 @@ export class MainScene implements OnInit, OnDestroy {
         tap(this.modalContrller.create(MainMenu,
             {running: this.running},
             {enableBackdropDismiss: false}),
-            modal => modal.onDidDismiss(command => this[command]())
+            modal => modal.onDidDismiss((command: 'play'|'resume') => this[command]())
         ).present();
     }
 
@@ -132,7 +132,7 @@ export class MainScene implements OnInit, OnDestroy {
         this.newRecord = false;
     }
 
-    update(event) {
+    update(event: boolean) {
         if(event === true) {
             this.gameWon();
         } else if (this.activeRow > this.lastRow) {

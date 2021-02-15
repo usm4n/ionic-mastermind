@@ -13,6 +13,7 @@ import { StatsStore } from '../../store/stats.store';
 import { SettingsStore } from '../../store/settings.store';
 import { combineLatest } from 'rxjs/observable/combineLatest';
 import { Settings } from '../../models/settings';
+import { TimerData } from '../../components/game-timer.component';
 
 @Component({
     templateUrl: 'main.html'
@@ -73,7 +74,7 @@ export class MainMenu implements OnInit {
         this.modalContrller.create(SettingsMenu, {running: this.running}).present();
     }
 
-    formatTime(time: any): string {
+    formatTime(time: TimerData): string {
         return (time.min < 10 ? '0' : '') + time.min + ':'
             + (time.sec < 10 ? '0' : '') + time.sec + ':0'
             + time.micSec;

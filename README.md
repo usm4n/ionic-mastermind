@@ -20,7 +20,9 @@
     <a href="https://github.com/usm4n/ionic-mastermind"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href = "https://usm4n.github.io/mastermind/">View Demo</a>
+    <a href ="https://usm4n.github.io/mastermind/">View Demo</a>
+    .
+    <a href ="#usage">How to Play</a>
     ·
     <a href="https://github.com/usm4n/ionic-mastermind/issues">Report Bug</a>
     ·
@@ -35,6 +37,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#usage">Usage</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -70,6 +73,10 @@ The App was built using Ionic 3 and Angular framework and demonstrates various a
 
 The App is open sourced to appreciate the great efforts and work of both the Ionic and Angular Dev teams.
 
+### Usage
+
+Playing the game is simple, you select the desired color from the right column and click on the target slot in the currently active row. Once a row is filled, the left column will become active. Then, you can reveal the hints by clicking on the cell. If your are playing the game in a desktop browser, use ESC key to get back to the previous menu.
+
 ### Built With
 
 Following technologies are used in building this App:
@@ -93,7 +100,7 @@ Following tools will be needed to run the project on your local machine:
   ```sh
   npm install -g npm@latest
   ```
-* Ionic Cli
+* Ionic CLI
   ```sh
   npm install -g @ionic/cli
   ```
@@ -109,11 +116,11 @@ Following tools will be needed to run the project on your local machine:
    ```sh
    git clone https://github.com/usm4n/ionic-mastermind.git
    ```
-2. Install NPM packages by running following command inside the project directory.
+2. Install NPM packages by running the following command inside the project directory.
    ```sh
    npm install
    ```
-3. Serve you App in browser using:
+3. Serve your App in the browser using:
    ```sh
    ionic serve
    ```
@@ -153,6 +160,7 @@ Project Link: [https://github.com/usm4n/ionic-mastermind](https://github.com/usm
 
 * [Ionic Framework Documentation](https://ionicframework.com/docs)
 * [Angular Framework Documentation](https://angular.io/docs)
+* [Best Readme Template](https://github.com/othneildrew/Best-README-Template)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

@@ -23,8 +23,8 @@ export class AlertComponent {
     @Input() message: string = 'Are you sure?';
     @Input() showAlert: boolean = false;
 
-    private resolve: (boolean) => void;
-    private reject: (boolean) => void;
+    private resolve: (arg0: boolean) => void;
+    private reject: (arg0: boolean) => void;
 
     constructor() {}
 

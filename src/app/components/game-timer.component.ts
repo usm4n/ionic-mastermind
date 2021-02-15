@@ -6,6 +6,13 @@ import { ISubscription } from 'rxjs/Subscription';
 import 'rxjs/add/observable/never';
 import 'rxjs/add/observable/interval';
 
+export type TimerData = {
+    min: number,
+    sec: number,
+    micSec: number,
+    counter: number,
+}
+
 @Component({
     selector: 'game-timer',
     template: `{{getFormatedTimer()}}`
@@ -17,7 +24,7 @@ export class GameTimerComponent implements OnInit {
 
     timerSubscription: ISubscription;
 
-    timer = {min: 0, sec: 0, micSec: 0, counter: 0};
+    timer: TimerData = {min: 0, sec: 0, micSec: 0, counter: 0};
 
     constructor() {
         this.tick$ = this.getTickStream();
@@ -55,7 +62,7 @@ export class GameTimerComponent implements OnInit {
     }
 
     setTimerValues() {
-        let sec, micros;
+        let sec: number, micros: number;
 
         micros = this.timer.counter;
         sec = micros / 10;
@@ -73,7 +80,7 @@ export class GameTimerComponent implements OnInit {
             + this.timer.micSec;
     }
 
-    value(): any {
+    value(): TimerData {
         return this.timer;
     }
 

@@ -17,7 +17,11 @@
   <p align="center">
     A Project built with Ionic and Angular Frameworks.
     <br />
+    <br />
     <a href="https://github.com/usm4n/ionic-mastermind"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href='https://play.google.com/store/apps/details?id=com.eggies.mastermind&hl=en&gl=US&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img width="200" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
     <br />
     <br />
     <a href ="https://usm4n.github.io/mastermind/">View Demo</a>
@@ -173,4 +177,4 @@ Project Link: [https://github.com/usm4n/ionic-mastermind](https://github.com/usm
 [issues-shield]: https://img.shields.io/github/issues/usm4n/ionic-mastermind.svg?style=for-the-badge
 [issues-url]: https://github.com/usm4n/ionic-mastermind/issues
 [license-shield]: https://img.shields.io/github/license/usm4n/ionic-mastermind.svg?style=for-the-badge
-[license-url]: https://github.com/usm4n/ionic-mastermind/blob/main/LICENSE.txt
+[license-url]: https://github.com/usm4n/ionic-mastermind/blob/main/LICENSE
